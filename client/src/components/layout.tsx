@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Instagram, Youtube, UtensilsCrossed } from "lucide-react";
+import { Menu, X, Instagram, Youtube, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -16,10 +16,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/">
-            <a className="font-display font-bold text-xl md:text-2xl text-primary tracking-tight">
+            <a className="font-display font-black text-xl md:text-2xl text-primary tracking-tight">
               ForYourInfluence
             </a>
           </Link>
@@ -31,7 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <a
                   className={`text-sm font-medium transition-colors hover:text-primary ${
                     location === link.href
-                      ? "text-primary"
+                      ? "text-primary font-bold"
                       : "text-muted-foreground"
                   }`}
                 >
@@ -39,16 +39,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </a>
               </Link>
             ))}
-            <Button size="sm" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-white">
               Recipe App
             </Button>
           </nav>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
+            data-testid="button-menu-toggle"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -56,23 +57,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Mobile Nav */}
         {isMenuOpen && (
-          <div className="md:hidden border-b bg-white animate-in slide-in-from-top-5">
+          <div className="md:hidden border-b bg-background animate-in slide-in-from-top-5">
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <a
-                    className={`text-lg font-medium py-2 ${
+                    className={`text-lg font-medium py-2 transition-colors ${
                       location === link.href
-                        ? "text-primary"
-                        : "text-muted-foreground"
+                        ? "text-primary font-bold"
+                        : "text-muted-foreground hover:text-primary"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
+                    data-testid={`link-nav-${link.label.toLowerCase()}`}
                   >
                     {link.label}
                   </a>
                 </Link>
               ))}
-              <Button className="w-full rounded-full bg-primary text-primary-foreground">
+              <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-white">
                 Try Recipe App
               </Button>
             </nav>
@@ -90,49 +92,42 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h3 className="font-display font-bold text-lg mb-4">ForYourInfluence</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                An independent South African food experience platform.
-                Chef-led. Unsponsored. No ratings. No free meals.
+                Independent South African food reviews. Chef-led. Self-funded. No sponsored content.
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Quick Links</h4>
+              <h4 className="font-bold font-display mb-4">Pages</h4>
               <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <Link href="/about"><a className="hover:text-primary">About Chef</a></Link>
-                <Link href="/favourites"><a className="hover:text-primary">Favourites</a></Link>
-                <Link href="/contact"><a className="hover:text-primary">Contact</a></Link>
+                <Link href="/about"><a className="hover:text-primary transition-colors">About Chef</a></Link>
+                <Link href="/favourites"><a className="hover:text-primary transition-colors">Favourites</a></Link>
+                <Link href="/contact"><a className="hover:text-primary transition-colors">Contact</a></Link>
               </div>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Follow</h4>
+              <h4 className="font-bold font-display mb-4">Connect</h4>
               <div className="flex gap-4">
-                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-youtube">
                   <Youtube size={20} />
                 </a>
-                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-instagram">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-tiktok">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
                     height="20"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-music-2"
+                    fill="currentColor"
                   >
-                    <circle cx="8" cy="18" r="4" />
-                    <path d="M12 18V2l7 4" />
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 0 2.9 2.9 0 0 1 5.66-.08v-3.4a6.47 6.47 0 0 0-5.66 3.21 6.37 6.37 0 0 0 5.66 10.07 6.34 6.34 0 0 0 6.34-6.33V8.93a8.81 8.81 0 0 0 3.77 1.76v-3z" />
                   </svg>
                 </a>
               </div>
             </div>
           </div>
-          <div className="border-t pt-8 text-center text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} ForYourInfluence. All rights reserved.
+          <div className="border-t border-border pt-8 text-center text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} ForYourInfluence. Independent reviews. No hype.
           </div>
         </div>
       </footer>
