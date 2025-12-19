@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Instagram, Youtube, TrendingUp } from "lucide-react";
+import { Menu, X, Instagram, Youtube, Video, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/">
-            <a className="font-display font-black text-xl md:text-2xl text-primary tracking-tight">
+            <a className="font-display font-black text-xl md:text-2xl text-primary tracking-tight hover:opacity-80 transition-opacity">
               ForYourInfluence
             </a>
           </Link>
@@ -34,12 +34,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       ? "text-primary font-bold"
                       : "text-muted-foreground"
                   }`}
+                  data-testid={`link-nav-${link.label.toLowerCase()}`}
                 >
                   {link.label}
                 </a>
               </Link>
             ))}
-            <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-white">
+            <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-white shadow-md">
               Recipe App
             </Button>
           </nav>
@@ -51,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             aria-label="Toggle menu"
             data-testid="button-menu-toggle"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={24} strokeWidth={2.5} /> : <Menu size={24} strokeWidth={2.5} />}
           </button>
         </div>
 
@@ -68,7 +69,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         : "text-muted-foreground hover:text-primary"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
-                    data-testid={`link-nav-${link.label.toLowerCase()}`}
+                    data-testid={`link-nav-mobile-${link.label.toLowerCase()}`}
                   >
                     {link.label}
                   </a>
@@ -86,7 +87,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="bg-secondary/30 border-t py-12">
+      <footer className="bg-secondary/15 border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -98,30 +99,49 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h4 className="font-bold font-display mb-4">Pages</h4>
               <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                <Link href="/about"><a className="hover:text-primary transition-colors">About Chef</a></Link>
-                <Link href="/favourites"><a className="hover:text-primary transition-colors">Favourites</a></Link>
-                <Link href="/contact"><a className="hover:text-primary transition-colors">Contact</a></Link>
+                <Link href="/about">
+                  <a className="hover:text-primary transition-colors" data-testid="link-footer-about">
+                    About Chef
+                  </a>
+                </Link>
+                <Link href="/favourites">
+                  <a className="hover:text-primary transition-colors" data-testid="link-footer-favourites">
+                    Favourites
+                  </a>
+                </Link>
+                <Link href="/contact">
+                  <a className="hover:text-primary transition-colors" data-testid="link-footer-contact">
+                    Contact
+                  </a>
+                </Link>
               </div>
             </div>
             <div>
               <h4 className="font-bold font-display mb-4">Connect</h4>
-              <div className="flex gap-4">
-                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-youtube">
-                  <Youtube size={20} />
+              <div className="flex gap-3">
+                <a 
+                  href="#" 
+                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  data-testid="link-youtube"
+                  aria-label="YouTube"
+                >
+                  <Youtube size={18} strokeWidth={2.5} />
                 </a>
-                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-instagram">
-                  <Instagram size={20} />
+                <a 
+                  href="#" 
+                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  data-testid="link-instagram"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={18} strokeWidth={2.5} />
                 </a>
-                <a href="#" className="p-2 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all" data-testid="link-tiktok">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.66 0 2.9 2.9 0 0 1 5.66-.08v-3.4a6.47 6.47 0 0 0-5.66 3.21 6.37 6.37 0 0 0 5.66 10.07 6.34 6.34 0 0 0 6.34-6.33V8.93a8.81 8.81 0 0 0 3.77 1.76v-3z" />
-                  </svg>
+                <a 
+                  href="#" 
+                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  data-testid="link-tiktok"
+                  aria-label="TikTok"
+                >
+                  <Video size={18} strokeWidth={2.5} />
                 </a>
               </div>
             </div>
