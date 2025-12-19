@@ -1,0 +1,141 @@
+import { useState } from "react";
+import { Link, useLocation } from "wouter";
+import { Menu, X, Instagram, Youtube, UtensilsCrossed } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/favourites", label: "Favourites" },
+    { href: "/contact", label: "Contact" },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col font-sans">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/">
+            <a className="font-display font-bold text-xl md:text-2xl text-primary tracking-tight">
+              ForYourInfluence
+            </a>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href}>
+                <a
+                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                    location === link.href
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </Link>
+            ))}
+            <Button size="sm" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+              Recipe App
+            </Button>
+          </nav>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Nav */}
+        {isMenuOpen && (
+          <div className="md:hidden border-b bg-white animate-in slide-in-from-top-5">
+            <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <a
+                    className={`text-lg font-medium py-2 ${
+                      location === link.href
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                </Link>
+              ))}
+              <Button className="w-full rounded-full bg-primary text-primary-foreground">
+                Try Recipe App
+              </Button>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      <main className="flex-1">
+        {children}
+      </main>
+
+      <footer className="bg-secondary/30 border-t py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="font-display font-bold text-lg mb-4">ForYourInfluence</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                An independent South African food experience platform.
+                Chef-led. Unsponsored. No ratings. No free meals.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Quick Links</h4>
+              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <Link href="/about"><a className="hover:text-primary">About Chef</a></Link>
+                <Link href="/favourites"><a className="hover:text-primary">Favourites</a></Link>
+                <Link href="/contact"><a className="hover:text-primary">Contact</a></Link>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Follow</h4>
+              <div className="flex gap-4">
+                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                  <Youtube size={20} />
+                </a>
+                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                  <Instagram size={20} />
+                </a>
+                <a href="#" className="p-2 bg-white rounded-full border hover:border-primary hover:text-primary transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-music-2"
+                  >
+                    <circle cx="8" cy="18" r="4" />
+                    <path d="M12 18V2l7 4" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t pt-8 text-center text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} ForYourInfluence. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
