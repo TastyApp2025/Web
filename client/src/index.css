@@ -35,7 +35,7 @@
 
 /* Urban Retro Dark Mode - Clear & Vibrant */
 :root {
-  --background: 203 15% 35%; /* Muted Dusty Blue-Grey - clearer */
+  --background: 203 15% 35%; /* Muted Dusty Blue-Grey */
   --foreground: 0 0% 100%; /* Pure White */
 
   --card: 203 15% 30%;
@@ -52,7 +52,7 @@
   --secondary-foreground: 0 0% 100%;
 
   --muted: 203 15% 25%;
-  --muted-foreground: 0 0% 82%; /* Soft Light Grey */
+  --muted-foreground: 0 0% 92%; /* Bright Light Grey */
 
   --accent: 7 76% 55%;
   --accent-foreground: 0 0% 100%;
@@ -83,7 +83,7 @@
   --secondary-foreground: 0 0% 100%;
 
   --muted: 203 15% 25%;
-  --muted-foreground: 0 0% 82%;
+  --muted-foreground: 0 0% 92%;
 
   --accent: 7 76% 55%;
   --accent-foreground: 0 0% 100%;
@@ -115,7 +115,7 @@
   font-family: var(--font-serif);
 }
 
-/* Ensure body text is readable */
+/* Ensure body text is readable and bright */
 p, span, li, a {
   @apply text-muted-foreground;
 }
