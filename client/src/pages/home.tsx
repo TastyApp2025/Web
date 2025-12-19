@@ -31,24 +31,24 @@ export default function Home() {
           <img 
             src={heroImage} 
             alt="Chef plating food" 
-            className="w-full h-full object-cover brightness-100"
+            className="w-full h-full object-cover brightness-90 opacity-95"
             data-testid="hero-image"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-transparent" />
         </div>
         <div className="container relative z-10 px-4 text-center text-white max-w-4xl mx-auto">
-          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg">
             Real Food<br />
-            <span className="text-primary">No Hype</span>
+            <span className="text-primary drop-shadow-md">No Hype</span>
           </h1>
-          <p className="font-serif text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+          <p className="font-serif text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
             Independent reviews. Self-funded meals. Honest takes from a professional chef in South Africa.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-            <Button size="lg" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg">
+            <Button size="lg" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg transform hover:-translate-y-1 transition-all">
               Watch Latest Reviews
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white/20">
+            <Button size="lg" variant="outline" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all">
               My Favourites
             </Button>
           </div>
@@ -56,10 +56,10 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4">Why I'm Different</h2>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">Why I'm Different</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">No ratings. No free meals. No sponsored content.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -69,11 +69,11 @@ export default function Home() {
               { icon: Shield, title: "No Sponsorships", desc: "Zero paid placements or deals" },
               { icon: BarChart3, title: "Contextual", desc: "Judged on their own merits" },
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/15 border border-secondary/40 transition-all hover:shadow-lg hover:-translate-y-2 hover:bg-secondary/20">
-                <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center text-primary mb-4">
+              <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border transition-all hover:shadow-lg hover:-translate-y-2 hover:bg-card/80">
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold font-display text-lg mb-2">{item.title}</h3>
+                <h3 className="font-bold font-display text-lg mb-2 text-foreground">{item.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -82,12 +82,12 @@ export default function Home() {
       </section>
 
       {/* YouTube Section - 4 Videos */}
-      <section className="py-20 bg-secondary/10 border-y border-secondary/20">
+      <section className="py-20 bg-card border-y border-border">
         <div className="container mx-auto px-4">
           <div className="mb-12">
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2">Latest on YouTube</h2>
+                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 text-foreground">Latest on YouTube</h2>
                 <p className="text-muted-foreground max-w-xl">
                   New restaurant & takeaway visits. Honest takes. Auto-updated.
                 </p>
@@ -103,8 +103,8 @@ export default function Home() {
           </div>
 
           {error && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
-              <p className="text-yellow-800 text-sm">
+            <div className="bg-yellow-900/30 border border-yellow-700/50 rounded-lg p-6 mb-8">
+              <p className="text-yellow-300 text-sm">
                 <strong>Setup Required:</strong> {error}. Add your YouTube API key and Channel ID to get started. See README for instructions.
               </p>
             </div>
@@ -135,7 +135,7 @@ export default function Home() {
                         className="absolute inset-0 w-full h-full object-cover group-hover:brightness-75 transition-all"
                       />
                     )}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                       <div className="w-14 h-14 rounded-full bg-white/95 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <Play fill="currentColor" className="ml-1 text-primary w-6 h-6" />
@@ -168,13 +168,13 @@ export default function Home() {
       </section>
 
       {/* YouTube Setup Section */}
-      <section className="py-16 bg-white border-b border-border">
+      <section className="py-16 bg-background border-b border-border">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-primary/10 border-l-4 border-primary rounded-lg p-8">
+          <div className="bg-primary/15 border-l-4 border-primary rounded-lg p-8">
             <div className="flex gap-4 items-start mb-6">
               <Code2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
               <div>
-                <h3 className="font-bold font-display text-xl mb-2">Automatic YouTube Updates</h3>
+                <h3 className="font-bold font-display text-xl mb-2 text-foreground">Automatic YouTube Updates</h3>
                 <p className="text-muted-foreground mb-6">
                   Your latest 4 videos appear here automatically. No manual updates needed.
                 </p>
@@ -184,10 +184,10 @@ export default function Home() {
                     <li>Get your YouTube Channel ID from your channel's About section</li>
                     <li>Create a Google Cloud project & enable YouTube Data API v3</li>
                     <li>Generate an API key in Google Cloud Console</li>
-                    <li>Copy <code className="bg-white px-2 py-1 rounded text-xs font-mono">.env.example</code> to <code className="bg-white px-2 py-1 rounded text-xs font-mono">.env.local</code></li>
+                    <li>Copy <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.example</code> to <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.local</code></li>
                     <li>Add your API key and Channel ID to the .env.local file</li>
                   </ol>
-                  <p className="text-xs text-muted-foreground mt-4 pt-4 border-t">
+                  <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
                     Full setup instructions available in the README.md file
                   </p>
                 </div>
@@ -198,9 +198,9 @@ export default function Home() {
       </section>
 
       {/* AI Recipe CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="bg-primary/10 border-2 border-primary/30 rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+          <div className="bg-card border-2 border-primary/30 rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
             <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
               <span className="text-primary font-bold tracking-wider text-sm mb-2 uppercase">AI Powered</span>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">
@@ -209,7 +209,7 @@ export default function Home() {
               <p className="text-muted-foreground mb-8 text-lg">
                 Generate meal ideas based on your pantry. Smart, practical recipes from chef knowledge.
               </p>
-              <Button size="lg" className="w-fit rounded-full bg-primary hover:bg-primary/90">
+              <Button size="lg" className="w-fit rounded-full bg-primary hover:bg-primary/90 text-white">
                 Try Recipe Generator <ChevronRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
@@ -219,14 +219,14 @@ export default function Home() {
                 alt="Cooking atmosphere"
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-white via-white/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-card to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Partner Ad Space */}
-      <section className="py-12 bg-secondary/15">
+      <section className="py-12 bg-card">
         <div className="container mx-auto px-4 flex justify-center">
           <div className="w-full max-w-3xl h-32 border-2 border-dashed border-border rounded-lg flex items-center justify-center text-muted-foreground text-sm uppercase tracking-widest" id="ad-banner-bottom" data-testid="ad-banner-bottom">
             {/* Partner Content / Ad Space - Customizable */}
