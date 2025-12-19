@@ -33,25 +33,25 @@
   --radius-lg: var(--radius);
 }
 
-/* Urban Retro Dark Mode */
+/* Urban Retro Dark Mode - Clear & Vibrant */
 :root {
-  --background: 165 8% 62%; /* Muted Dusty Blue-Grey */
+  --background: 203 15% 35%; /* Muted Dusty Blue-Grey - clearer */
   --foreground: 0 0% 100%; /* Pure White */
 
-  --card: 165 8% 55%;
+  --card: 203 15% 30%;
   --card-foreground: 0 0% 100%;
-  --popover: 165 8% 60%;
+  --popover: 203 15% 40%;
   --popover-foreground: 0 0% 100%;
 
-  /* Fresh Tomato Red - Main Accent */
+  /* Fresh Tomato Red - Vibrant */
   --primary: 7 76% 55%; 
   --primary-foreground: 0 0% 100%;
 
-  /* Leafy Green - Secondary Accent */
-  --secondary: 90 57% 43%; /* Leafy Green */
+  /* Leafy Green - Bold */
+  --secondary: 90 57% 43%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 165 8% 48%;
+  --muted: 203 15% 25%;
   --muted-foreground: 0 0% 82%; /* Soft Light Grey */
 
   --accent: 7 76% 55%;
@@ -60,20 +60,20 @@
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 165 8% 50%;
-  --input: 165 8% 50%;
+  --border: 203 15% 45%;
+  --input: 203 15% 45%;
   --ring: 7 76% 55%;
 
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 165 8% 62%;
+  --background: 203 15% 35%;
   --foreground: 0 0% 100%;
 
-  --card: 165 8% 55%;
+  --card: 203 15% 30%;
   --card-foreground: 0 0% 100%;
-  --popover: 165 8% 60%;
+  --popover: 203 15% 40%;
   --popover-foreground: 0 0% 100%;
 
   --primary: 7 76% 55%;
@@ -82,7 +82,7 @@
   --secondary: 90 57% 43%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 165 8% 48%;
+  --muted: 203 15% 25%;
   --muted-foreground: 0 0% 82%;
 
   --accent: 7 76% 55%;
@@ -91,8 +91,8 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 165 8% 50%;
-  --input: 165 8% 50%;
+  --border: 203 15% 45%;
+  --input: 203 15% 45%;
   --ring: 7 76% 55%;
 }
 
@@ -115,7 +115,7 @@
   font-family: var(--font-serif);
 }
 
-/* Body text color override for better contrast */
-p, span, a {
+/* Ensure body text is readable */
+p, span, li, a {
   @apply text-muted-foreground;
 }

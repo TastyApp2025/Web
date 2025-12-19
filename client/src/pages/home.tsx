@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <Layout>
       {/* Ad Banner - Hidden if empty */}
-      <section className="bg-primary/20 border-b border-primary/30">
+      <section className="bg-primary/20 border-b border-primary/40">
         <div className="container mx-auto px-4 py-8 flex justify-center min-h-[100px]">
           <div className="w-full max-w-4xl">
             {/* Ad Space - Only visible when populated */}
@@ -31,17 +31,17 @@ export default function Home() {
           <img 
             src={heroImage} 
             alt="Chef plating food" 
-            className="w-full h-full object-cover brightness-90 opacity-95"
+            className="w-full h-full object-cover brightness-100"
             data-testid="hero-image"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/70 to-transparent" />
         </div>
         <div className="container relative z-10 px-4 text-center text-white max-w-4xl mx-auto">
           <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg">
             Real Food<br />
             <span className="text-primary drop-shadow-md">No Hype</span>
           </h1>
-          <p className="font-serif text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
+          <p className="font-serif text-lg md:text-xl text-white/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
             Independent reviews. Self-funded meals. Honest takes from a professional chef in South Africa.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
@@ -70,7 +70,7 @@ export default function Home() {
               { icon: BarChart3, title: "Contextual", desc: "Judged on their own merits" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border transition-all hover:shadow-lg hover:-translate-y-2 hover:bg-card/80">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
+                <div className="w-16 h-16 rounded-full bg-primary/25 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
                 <h3 className="font-bold font-display text-lg mb-2 text-foreground">{item.title}</h3>
@@ -103,8 +103,8 @@ export default function Home() {
           </div>
 
           {error && (
-            <div className="bg-yellow-900/30 border border-yellow-700/50 rounded-lg p-6 mb-8">
-              <p className="text-yellow-300 text-sm">
+            <div className="bg-yellow-900/40 border border-yellow-600/60 rounded-lg p-6 mb-8">
+              <p className="text-yellow-200 text-sm">
                 <strong>Setup Required:</strong> {error}. Add your YouTube API key and Channel ID to get started. See README for instructions.
               </p>
             </div>
@@ -170,7 +170,7 @@ export default function Home() {
       {/* YouTube Setup Section */}
       <section className="py-16 bg-background border-b border-border">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-primary/15 border-l-4 border-primary rounded-lg p-8">
+          <div className="bg-primary/20 border-l-4 border-primary rounded-lg p-8">
             <div className="flex gap-4 items-start mb-6">
               <Code2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
               <div>
@@ -200,7 +200,7 @@ export default function Home() {
       {/* AI Recipe CTA */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="bg-card border-2 border-primary/30 rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
+          <div className="bg-card border-2 border-primary/40 rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
             <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
               <span className="text-primary font-bold tracking-wider text-sm mb-2 uppercase">AI Powered</span>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">
