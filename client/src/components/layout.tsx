@@ -19,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/">
-            <a className="font-display font-black text-xl md:text-2xl text-primary tracking-tight hover:opacity-80 transition-opacity">
+            <a className="font-display font-black text-3xl md:text-4xl text-primary tracking-tight hover:opacity-80 transition-opacity">
               ForYourInfluence
             </a>
           </Link>

@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Play, ChevronRight, ChefHat, DollarSign, Ban, UtensilsCrossed, Code2, Loader } from "lucide-react";
+import { Play, ChevronRight, Utensils, TrendingUp, Shield, BarChart3, Code2, Loader } from "lucide-react";
 import { useYouTubeVideos, getYouTubeWatchUrl, formatPublishDate, getYouTubeChannelUrl } from "@/hooks/use-youtube";
 import heroImage from "@assets/generated_images/professional_chef_plating_south_african_food.png";
 import atmosphereImage from "@assets/generated_images/south_african_dining_atmosphere.png";
@@ -13,22 +13,31 @@ export default function Home() {
 
   return (
     <Layout>
+      {/* Ad Banner - Hidden if empty */}
+      <section className="bg-primary/20 border-b border-primary/30">
+        <div className="container mx-auto px-4 py-8 flex justify-center min-h-[100px]">
+          <div className="w-full max-w-4xl">
+            {/* Ad Space - Only visible when populated */}
+            <div id="ad-banner-top" className="hidden" data-testid="ad-banner-top">
+              {/* Partner ad code goes here */}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImage} 
             alt="Chef plating food" 
-            className="w-full h-full object-cover brightness-[0.35]"
+            className="w-full h-full object-cover brightness-100"
+            data-testid="hero-image"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
         </div>
         <div className="container relative z-10 px-4 text-center text-white max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur border border-white/25 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <ChefHat size={14} className="text-primary" />
-            <span className="text-xs font-medium uppercase tracking-wider">Chef-Led Reviews</span>
-          </div>
-          <h1 className="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
             Real Food<br />
             <span className="text-primary">No Hype</span>
           </h1>
@@ -55,14 +64,14 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: ChefHat, title: "Professional Chef", desc: "Kitchen experience shapes every review" },
-              { icon: DollarSign, title: "Self-Funded", desc: "I pay for every single meal" },
-              { icon: Ban, title: "No Sponsorships", desc: "Zero paid placements or deals" },
-              { icon: UtensilsCrossed, title: "Contextual", desc: "Judged on their own merits" },
+              { icon: Utensils, title: "Professional Chef", desc: "Kitchen experience shapes every review" },
+              { icon: TrendingUp, title: "Self-Funded", desc: "I pay for every single meal" },
+              { icon: Shield, title: "No Sponsorships", desc: "Zero paid placements or deals" },
+              { icon: BarChart3, title: "Contextual", desc: "Judged on their own merits" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-secondary/15 border border-secondary/40 transition-all hover:shadow-lg hover:-translate-y-2 hover:bg-secondary/20">
-                <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center text-primary mb-4">
-                  <item.icon size={24} strokeWidth={2.5} />
+                <div className="w-16 h-16 rounded-full bg-primary/15 flex items-center justify-center text-primary mb-4">
+                  <item.icon size={32} strokeWidth={1.5} />
                 </div>
                 <h3 className="font-bold font-display text-lg mb-2">{item.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
@@ -219,7 +228,7 @@ export default function Home() {
       {/* Partner Ad Space */}
       <section className="py-12 bg-secondary/15">
         <div className="container mx-auto px-4 flex justify-center">
-          <div className="w-full max-w-3xl h-32 border-2 border-dashed border-border rounded-lg flex items-center justify-center text-muted-foreground text-sm uppercase tracking-widest">
+          <div className="w-full max-w-3xl h-32 border-2 border-dashed border-border rounded-lg flex items-center justify-center text-muted-foreground text-sm uppercase tracking-widest" id="ad-banner-bottom" data-testid="ad-banner-bottom">
             {/* Partner Content / Ad Space - Customizable */}
             Partner Content
           </div>
