@@ -13,18 +13,6 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* Ad Banner - Hidden if empty */}
-      <section className="bg-primary/20 border-b border-primary/40">
-        <div className="container mx-auto px-4 py-8 flex justify-center min-h-[100px]">
-          <div className="w-full max-w-4xl">
-            {/* Ad Space - Only visible when populated */}
-            <div id="ad-banner-top" className="hidden" data-testid="ad-banner-top">
-              {/* Partner ad code goes here */}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -69,12 +57,12 @@ export default function Home() {
               { icon: Shield, title: "No Sponsorships", desc: "Zero paid placements or deals" },
               { icon: BarChart3, title: "Contextual", desc: "Judged on their own merits" },
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-card border border-border transition-all hover:shadow-lg hover:-translate-y-2 hover:bg-card/80">
-                <div className="w-16 h-16 rounded-full bg-primary/25 flex items-center justify-center text-primary mb-4">
+              <div key={i} className="flex flex-col items-center text-center p-6 rounded-lg bg-card border-2 border-border transition-all hover:shadow-lg hover:-translate-y-2">
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold font-display text-lg mb-2 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-bold font-display text-lg mb-2 text-white">{item.title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -82,7 +70,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Section - 4 Videos */}
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-20 bg-background border-y border-border">
         <div className="container mx-auto px-4">
           <div className="mb-12">
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
@@ -127,7 +115,7 @@ export default function Home() {
                   className="group block hover:no-underline"
                   data-testid={`video-card-${video.videoId}`}
                 >
-                  <div className="relative aspect-video bg-muted rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-all cursor-pointer">
+                  <div className="relative aspect-video bg-muted rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all cursor-pointer">
                     {video.thumbnail && (
                       <img 
                         src={video.thumbnail} 
