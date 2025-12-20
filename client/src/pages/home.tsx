@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, ChevronRight, Utensils, TrendingUp, Shield, BarChart3, Code2, Loader } from "lucide-react";
 import { useYouTubeVideos, getYouTubeWatchUrl, formatPublishDate, getYouTubeChannelUrl } from "@/hooks/use-youtube";
+import { siteContent } from "@/data/site-content";
 import heroImage from "@assets/generated_images/professional_chef_plating_south_african_food.png";
 import atmosphereImage from "@assets/generated_images/south_african_dining_atmosphere.png";
 
@@ -26,18 +27,18 @@ export default function Home() {
         </div>
         <div className="container relative z-10 px-4 text-center text-white max-w-4xl mx-auto">
           <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg">
-            Real Food<br />
-            <span className="text-primary drop-shadow-md">No Hype</span>
+            {siteContent.home.heroTitle1}<br />
+            <span className="text-primary drop-shadow-md">{siteContent.home.heroTitle2}</span>
           </h1>
           <p className="font-serif text-lg md:text-xl text-white/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
-            Independent reviews. Self-funded meals. Honest takes from a professional chef in South Africa.
+            {siteContent.home.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
             <Button size="lg" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg transform hover:-translate-y-1 transition-all">
-              Watch Latest Reviews
+              {siteContent.home.watchButton}
             </Button>
             <Button size="lg" variant="outline" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all">
-              My Favourites
+              {siteContent.home.favouritesButton}
             </Button>
           </div>
         </div>
@@ -47,16 +48,13 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">Why I'm Different</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">No ratings. No free meals. No sponsored content.</p>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">{siteContent.home.whyDifferent}</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">{siteContent.home.whyDifferentSubtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Utensils, title: "Professional Chef", desc: "Kitchen experience shapes every review" },
-              { icon: TrendingUp, title: "Self-Funded", desc: "I pay for every single meal" },
-              { icon: Shield, title: "No Sponsorships", desc: "Zero paid placements or deals" },
-              { icon: BarChart3, title: "Contextual", desc: "Judged on their own merits" },
-            ].map((item, i) => (
+            {siteContent.home.features.map((item, i) => (
+              { icon: [Utensils, TrendingUp, Shield, BarChart3][i], title: item.title, desc: item.description }
+            )).map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center p-6 rounded-lg bg-card border-2 border-border transition-all hover:shadow-lg hover:-translate-y-2">
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
@@ -75,15 +73,15 @@ export default function Home() {
           <div className="mb-12">
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 text-foreground">Latest on YouTube</h2>
+                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 text-foreground">{siteContent.home.youtubeSection}</h2>
                 <p className="text-muted-foreground max-w-xl">
-                  New restaurant & takeaway visits. Honest takes. Auto-updated.
+                  {siteContent.home.youtubeSectionSubtitle}
                 </p>
               </div>
               {YOUTUBE_CHANNEL_ID && (
                 <Button asChild variant="ghost" className="hidden md:flex gap-2 text-primary hover:text-primary/80">
                   <a href={getYouTubeChannelUrl(YOUTUBE_CHANNEL_ID)} target="_blank" rel="noopener noreferrer">
-                    View All Videos <ChevronRight className="w-4 h-4" />
+                    {siteContent.home.viewAllVideos} <ChevronRight className="w-4 h-4" />
                   </a>
                 </Button>
               )}
@@ -155,35 +153,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* YouTube Setup Section */}
-      <section className="py-16 bg-background border-b border-border">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-primary/20 border-l-4 border-primary rounded-lg p-8">
-            <div className="flex gap-4 items-start mb-6">
-              <Code2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
-              <div>
-                <h3 className="font-bold font-display text-xl mb-2 text-foreground">Automatic YouTube Updates</h3>
-                <p className="text-muted-foreground mb-6">
-                  Your latest 4 videos appear here automatically. No manual updates needed.
-                </p>
-                <div className="space-y-3 text-sm">
-                  <p className="font-semibold text-foreground">To enable this on your site:</p>
-                  <ol className="space-y-2 list-decimal list-inside text-muted-foreground">
-                    <li>Get your YouTube Channel ID from your channel's About section</li>
-                    <li>Create a Google Cloud project & enable YouTube Data API v3</li>
-                    <li>Generate an API key in Google Cloud Console</li>
-                    <li>Copy <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.example</code> to <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.local</code></li>
-                    <li>Add your API key and Channel ID to the .env.local file</li>
-                  </ol>
-                  <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
-                    Full setup instructions available in the README.md file
+      {/* YouTube Setup Section - Only show if API is not configured */}
+      {!YOUTUBE_CHANNEL_ID && (
+        <section className="py-16 bg-background border-b border-border">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="bg-primary/20 border-l-4 border-primary rounded-lg p-8">
+              <div className="flex gap-4 items-start mb-6">
+                <Code2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
+                <div>
+                  <h3 className="font-bold font-display text-xl mb-2 text-foreground">Automatic YouTube Updates</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Your latest 4 videos appear here automatically. No manual updates needed.
                   </p>
+                  <div className="space-y-3 text-sm">
+                    <p className="font-semibold text-foreground">To enable this on your site:</p>
+                    <ol className="space-y-2 list-decimal list-inside text-muted-foreground">
+                      <li>Get your YouTube Channel ID from your channel's About section</li>
+                      <li>Create a Google Cloud project & enable YouTube Data API v3</li>
+                      <li>Generate an API key in Google Cloud Console</li>
+                      <li>Copy <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.example</code> to <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.local</code></li>
+                      <li>Add your API key and Channel ID to the .env.local file</li>
+                    </ol>
+                    <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
+                      Full setup instructions available in the README.md file
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* AI Recipe CTA */}
       <section className="py-20 bg-background">
@@ -192,13 +192,13 @@ export default function Home() {
             <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
               <span className="text-primary font-bold tracking-wider text-sm mb-2 uppercase">AI Powered</span>
               <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">
-                Cook What You Have
+                {siteContent.home.recipeTitle}
               </h2>
               <p className="text-muted-foreground mb-8 text-lg">
-                Generate meal ideas based on your pantry. Smart, practical recipes from chef knowledge.
+                {siteContent.home.recipeSubtitle}
               </p>
               <Button size="lg" className="w-fit rounded-full bg-primary hover:bg-primary/90 text-white">
-                Try Recipe Generator <ChevronRight className="ml-2 w-4 h-4" />
+                {siteContent.home.tryRecipeButton} <ChevronRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
             <div className="md:w-1/2 bg-muted relative min-h-[300px]">

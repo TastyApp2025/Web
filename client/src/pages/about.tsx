@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
+import { siteContent } from "@/data/site-content";
 import aboutImage from "@assets/generated_images/fresh_ingredients_tomato_and_herbs.png";
 
 export default function About() {
@@ -8,9 +9,9 @@ export default function About() {
       <div className="bg-secondary/30 py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <Badge variant="outline" className="mb-4 bg-white/50 backdrop-blur">Our Philosophy</Badge>
-          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6">About ForYourInfluence</h1>
+          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6">{siteContent.about.title}</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-             A platform created to offer a more honest and realistic way of talking about food in South Africa.
+             {siteContent.about.subtitle}
           </p>
         </div>
       </div>
@@ -25,16 +26,13 @@ export default function About() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="font-display font-bold text-3xl">The Chef's Perspective</h2>
+            <h2 className="font-display font-bold text-3xl">{siteContent.about.chefPerspective}</h2>
             <div className="prose prose-lg text-muted-foreground">
               <p>
-                As a professional chef, I understand food from the kitchen side. I know the prep, the costs, and the effort that goes into a plate.
+                {siteContent.about.chefBio1}
               </p>
               <p>
-                However, this platform isn't about critiquing knife cuts. It focuses on the <strong>real experience of eating out</strong>. I consider the atmosphere, service, food taste, and ultimately—value.
-              </p>
-              <p>
-                Restaurants and takeaways are reviewed differently, based on what they aim to deliver. A fine dining spot has different standards than a street food vendor, but both can be excellent in their own context.
+                {siteContent.about.chefBio2}
               </p>
             </div>
             <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">

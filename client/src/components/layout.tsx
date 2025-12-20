@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Instagram, Youtube, Video, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteContent } from "@/data/site-content";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="font-display font-black text-3xl md:text-4xl text-primary tracking-tight hover:opacity-80 transition-opacity">
-            ForYourInfluence
+            {siteContent.siteTitle}
           </Link>
 
           {/* Desktop Nav */}
@@ -39,7 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </Link>
             ))}
             <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-white shadow-md">
-              Recipe App
+              {siteContent.recipeAppButton}
             </Button>
           </nav>
 
@@ -74,7 +75,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               ))}
               <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-white">
-                Try Recipe App
+                {siteContent.recipeAppButton}
               </Button>
             </nav>
           </div>
@@ -89,31 +90,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="font-display font-bold text-lg mb-4">ForYourInfluence</h3>
+              <h3 className="font-display font-bold text-lg mb-4">{siteContent.footer.siteTitleFooter}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Independent South African food reviews. Chef-led. Self-funded. No sponsored content.
+                {siteContent.footer.description}
               </p>
             </div>
             <div>
-              <h4 className="font-bold font-display mb-4">Pages</h4>
+              <h4 className="font-bold font-display mb-4">{siteContent.footer.pagesTitle}</h4>
               <div className="flex flex-col gap-2 text-sm text-muted-foreground">
                 <Link href="/about" className="hover:text-primary transition-colors" data-testid="link-footer-about">
-                  About Chef
+                  {siteContent.footer.aboutLink}
                 </Link>
                 <Link href="/favourites" className="hover:text-primary transition-colors" data-testid="link-footer-favourites">
-                  Favourites
+                  {siteContent.footer.favouritesLink}
                 </Link>
                 <Link href="/contact" className="hover:text-primary transition-colors" data-testid="link-footer-contact">
-                  Contact
+                  {siteContent.footer.contactLink}
                 </Link>
               </div>
             </div>
             <div>
-              <h4 className="font-bold font-display mb-4">Connect</h4>
+              <h4 className="font-bold font-display mb-4">{siteContent.footer.connectTitle}</h4>
               <div className="flex gap-3">
                 <a 
                   href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
                   data-testid="link-youtube"
                   aria-label="YouTube"
                 >
@@ -121,7 +122,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </a>
                 <a 
                   href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
                   data-testid="link-instagram"
                   aria-label="Instagram"
                 >
@@ -129,7 +130,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </a>
                 <a 
                   href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
                   data-testid="link-tiktok"
                   aria-label="TikTok"
                 >
@@ -139,7 +140,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} ForYourInfluence. Independent reviews. No hype.
+            &copy; {new Date().getFullYear()} {siteContent.footer.siteTitleFooter}. {siteContent.footer.copyrightText}
           </div>
         </div>
       </footer>

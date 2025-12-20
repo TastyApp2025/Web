@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Restaurant Name 1",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place1.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 2,
+    "name": "Restaurant Name 2",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place2.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 3,
+    "name": "Restaurant Name 3",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place3.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 4,
+    "name": "Restaurant Name 4",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place4.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 5,
+    "name": "Restaurant Name 5",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place5.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 6,
+    "name": "Restaurant Name 6",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place6.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 7,
+    "name": "Restaurant Name 7",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place7.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 8,
+    "name": "Restaurant Name 8",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place8.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 9,
+    "name": "Restaurant Name 9",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place9.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 10,
+    "name": "Restaurant Name 10",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place10.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  }
+]

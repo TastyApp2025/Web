@@ -45,7 +45,7 @@ export function useYouTubeVideos(maxResults: number = 4) {
 
         // Fetch videos from uploads playlist
         const videosResponse = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${maxResults}&key=${YOUTUBE_API_KEY}`
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=${maxResults * 3}&key=${YOUTUBE_API_KEY}`
         );
 
         if (!videosResponse.ok) {
@@ -53,15 +53,59 @@ export function useYouTubeVideos(maxResults: number = 4) {
         }
 
         const videosData = await videosResponse.json();
+        
+        // Get video IDs to fetch durations
+        const videoIds = videosData.items?.map((item: any) => item.snippet?.resourceId?.videoId).filter(Boolean).join(',');
+        
+        if (!videoIds) {
+          setVideos([]);
+          setError(null);
+          setLoading(false);
+          return;
+        }
 
-        const formattedVideos: YouTubeVideo[] = videosData.items?.map((item: any) => ({
-          id: item.id,
-          title: item.snippet?.title || 'Untitled',
-          description: item.snippet?.description || '',
-          thumbnail: item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.default?.url || '',
-          publishedAt: item.snippet?.publishedAt || '',
-          videoId: item.snippet?.resourceId?.videoId || '',
-        })) || [];
+        // Fetch video details to get duration
+        const detailsResponse = await fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=${videoIds}&key=${YOUTUBE_API_KEY}`
+        );
+
+        if (!detailsResponse.ok) {
+          throw new Error('Failed to fetch video details');
+        }
+
+        const detailsData = await detailsResponse.json();
+        
+        // Create a map of video durations
+        const durationMap: { [key: string]: number } = {};
+        detailsData.items?.forEach((item: any) => {
+          const duration = item.contentDetails?.duration;
+          if (duration) {
+            // Parse ISO 8601 duration format (e.g., PT1H2M3S)
+            const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+            const hours = parseInt(match?.[1] || '0');
+            const minutes = parseInt(match?.[2] || '0');
+            const seconds = parseInt(match?.[3] || '0');
+            const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            durationMap[item.id] = totalSeconds;
+          }
+        });
+
+        // Filter out shorts (videos less than 60 seconds)
+        const formattedVideos: YouTubeVideo[] = videosData.items
+          ?.filter((item: any) => {
+            const videoId = item.snippet?.resourceId?.videoId;
+            const duration = durationMap[videoId];
+            return duration && duration >= 60; // Only include videos 60 seconds or longer
+          })
+          ?.slice(0, maxResults) // Take only the requested number after filtering
+          ?.map((item: any) => ({
+            id: item.id,
+            title: item.snippet?.title || 'Untitled',
+            description: item.snippet?.description || '',
+            thumbnail: item.snippet?.thumbnails?.high?.url || item.snippet?.thumbnails?.default?.url || '',
+            publishedAt: item.snippet?.publishedAt || '',
+            videoId: item.snippet?.resourceId?.videoId || '',
+          })) || [];
 
         setVideos(formattedVideos);
         setError(null);
