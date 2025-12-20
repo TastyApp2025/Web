@@ -22,19 +22,19 @@ export default function Contact() {
             <Card className="p-6 border-none shadow-md bg-secondary/30">
               <h3 className="font-bold mb-4">{siteContent.contact.socialsTitle}</h3>
               <div className="space-y-4">
-                <a href="#" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href={siteContent.contact.youtubeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                   <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-red-600">
                     <Youtube size={20} />
                   </div>
                   <span className="font-medium">{siteContent.contact.youtube}</span>
                 </a>
-                <a href="#" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href={siteContent.contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-pink-600">
                     <Instagram size={20} />
                   </div>
                   <span className="font-medium">{siteContent.contact.instagram}</span>
                 </a>
-                <a href="#" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <a href={siteContent.contact.tiktokUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-black">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -54,14 +54,6 @@ export default function Contact() {
                 </a>
               </div>
             </Card>
-
-            <Card className="p-6 border-none shadow-md bg-primary/5">
-              <h3 className="font-bold mb-2">{siteContent.contact.directEmailTitle}</h3>
-              <a href={`mailto:${siteContent.contact.directEmail}`} className="flex items-center gap-2 text-primary font-medium hover:underline">
-                <Mail size={16} />
-                {siteContent.contact.directEmail}
-              </a>
-            </Card>
           </div>
 
           <div className="md:col-span-2">
@@ -70,22 +62,39 @@ export default function Contact() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{siteContent.contact.nameLabel}</label>
-                    <Input placeholder={siteContent.contact.namePlaceholder} />
+                    <Input name="name" placeholder={siteContent.contact.namePlaceholder} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">{siteContent.contact.emailLabel}</label>
-                    <Input type="email" placeholder={siteContent.contact.emailPlaceholder} />
+                    <Input name="email" type="email" placeholder={siteContent.contact.emailPlaceholder} />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{siteContent.contact.subjectLabel}</label>
-                  <Input placeholder={siteContent.contact.subjectPlaceholder} />
+                  <Input name="subject" placeholder={siteContent.contact.subjectPlaceholder} />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">{siteContent.contact.messageLabel}</label>
-                  <Textarea placeholder={siteContent.contact.messagePlaceholder} className="min-h-[150px]" />
+                  <Textarea name="message" placeholder={siteContent.contact.messagePlaceholder} className="min-h-[150px]" />
                 </div>
-                <Button className="w-full md:w-auto rounded-full px-8" size="lg">
+                <Button 
+                  className="w-full md:w-auto rounded-full px-8" 
+                  size="lg"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const form = (e.target as HTMLButtonElement).closest('form');
+                    if (form) {
+                      const formData = new FormData(form);
+                      const name = formData.get('name') || form.querySelector('input[placeholder*="Your name"]')?.value || '';
+                      const email = formData.get('email') || form.querySelector('input[type="email"]')?.value || '';
+                      const subject = formData.get('subject') || form.querySelector('input[placeholder*="Collaboration"]')?.value || '';
+                      const message = formData.get('message') || form.querySelector('textarea')?.value || '';
+                      
+                      const mailtoLink = `mailto:${siteContent.contact.contactFormEmail}?subject=${encodeURIComponent(subject || 'Contact Form Submission')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                      window.location.href = mailtoLink;
+                    }
+                  }}
+                >
                   {siteContent.contact.sendButton}
                 </Button>
               </form>

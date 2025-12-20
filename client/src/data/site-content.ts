@@ -4,13 +4,13 @@
 export const siteContent = {
   // Header & Navigation
   siteTitle: "ForYourInfluence",
-  recipeAppButton: "Recipe App",
+  recipeAppButton: "Tastey",
 
   // Home Page
   home: {
     heroTitle1: "Real Food",
     heroTitle2: "No Hype",
-    heroSubtitle: "Independent reviews. Self-funded meals. Honest takes from a professional chef in South Africa.",
+    heroSubtitle: "ForYourInfluence is a South African food experience platform run by a professional chef Wesley. I visit restaurants and takeaways independently, pay for my own food, and share honest insights into the full dining. Alongside this, I offer an AI-powered recipe generator \"Tastey\" to help people cook smarter at home.",
     watchButton: "Watch Latest Reviews",
     favouritesButton: "My Favourites",
     whyDifferent: "Why I'm Different",
@@ -30,7 +30,7 @@ export const siteContent = {
       },
       {
         title: "Contextual",
-        description: "Judged on their own merits"
+        description: "Judged on their own merits to be different"
       }
     ],
     youtubeSection: "Latest on YouTube",
@@ -38,7 +38,9 @@ export const siteContent = {
     viewAllVideos: "View All Videos",
     recipeTitle: "Cook What You Have",
     recipeSubtitle: "Generate meal ideas based on your pantry. Smart, practical recipes from chef knowledge.",
-    tryRecipeButton: "Try Recipe Generator",
+    tryRecipeButton: "Tastey App",
+    tasteyLink: "https://www.tastey.co.za/",
+    partnerContent: "Partner Content",
   },
 
   // Favourites Page
@@ -52,21 +54,22 @@ export const siteContent = {
   about: {
     title: "About ForYourInfluence",
     subtitle: "A platform created to offer a more honest and realistic way of talking about food in South Africa.",
-    chefPerspective: "The Chef's Perspective",
-    chefBio1: "As a professional chef, I understand food from the kitchen side. I know the prep, the costs, and the effort that goes into a plate. However, this platform isn't about critiquing knife cuts. It focuses on the real experience of eating out. I consider the atmosphere, service, food taste, and ultimately—value.",
-    chefBio2: "Restaurants and takeaways are reviewed differently, based on what they aim to deliver. A fine dining spot has different standards than a street food vendor, but both can be excellent in their own context.",
+    chefPerspective: "About",
+    chefBio1: "As a professional chef, I understand food from the kitchen side. I know the prep, the costs, and the effort that goes into a plate. However, this platform isn't about being overly technical or harsh. It focuses on the real experience of eating out. I consider the atmosphere, service, food taste, and ultimately the value.",
+    chefBio2: "Restaurants and takeaways are reviewed differently, based on what they aim to deliver. A fine dining spot has different standards than a street food vendor, but both can be excellent in their own context. All visits are independent. I pay for my own food and do not accept free meals or paid promotions to review or visit restaurants.",
   },
 
   // Contact Page
   contact: {
     title: "Get in Touch",
     subtitle: "For media enquiries, collaborations, or general questions.",
-    socialsTitle: "Socials",
-    directEmailTitle: "Direct Email",
-    directEmail: "chef@foryourinfluence.com",
+    socialsTitle: "Connect",
     youtube: "YouTube",
+    youtubeUrl: "https://www.youtube.com/@ForYourInfluence",
     instagram: "Instagram",
+    instagramUrl: "https://www.instagram.com/4yourinfluence",
     tiktok: "TikTok",
+    tiktokUrl: "https://www.tiktok.com/@foryourinfluence",
     nameLabel: "Name",
     namePlaceholder: "Your name",
     emailLabel: "Email",
@@ -76,6 +79,8 @@ export const siteContent = {
     messageLabel: "Message",
     messagePlaceholder: "How can we help?",
     sendButton: "Send Message",
+    // EDIT BELOW: Change this email to where you want contact form messages sent
+    contactFormEmail: "chef@foryourinfluence.com",
   },
 
   // Footer
@@ -88,5 +93,6 @@ export const siteContent = {
     contactLink: "Contact",
     connectTitle: "Connect",
     copyrightText: "Independent reviews. No hype.",
+    // Social links (same as contact section - edit in contact.youtubeUrl, contact.instagramUrl, contact.tiktokUrl above)
   }
 };

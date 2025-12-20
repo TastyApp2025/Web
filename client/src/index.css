@@ -14,6 +14,8 @@
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-green: hsl(var(--green));
+  --color-green-foreground: hsl(var(--green-foreground));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
@@ -33,67 +35,79 @@
   --radius-lg: var(--radius);
 }
 
-/* Urban Retro Dark Mode - 100% Bright Text */
+/* Food & Travel Creator Teal & Coral Palette - 100% Bright Text */
 :root {
-  --background: 203 15% 35%; /* Muted Dusty Blue-Grey */
+  --background: 200 35% 18%; /* Deep Sophisticated Teal */
   --foreground: 0 0% 100%; /* Pure White */
 
-  --card: 203 15% 30%;
+  --card: 200 35% 26%;
   --card-foreground: 0 0% 100%;
-  --popover: 203 15% 40%;
+  --popover: 200 35% 33%;
   --popover-foreground: 0 0% 100%;
 
-  /* Fresh Tomato Red - Vibrant */
-  --primary: 7 76% 55%; 
+  /* Warm Peachy Coral - Appetizing */
+  --primary: 15 85% 55%; 
   --primary-foreground: 0 0% 100%;
 
-  /* Leafy Green - Bold */
-  --secondary: 90 57% 43%;
-  --secondary-foreground: 0 0% 100%;
+  /* Warm Gold - Complementary */
+  --secondary: 40 85% 55%;
+  --secondary-foreground: 0 0% 20%;
 
-  --muted: 203 15% 25%;
+  /* Fresh Green - Tastey App Button */
+  --green: 120 50% 45%;
+  --green-foreground: 0 0% 100%;
+
+  --muted: 200 35% 12%;
   --muted-foreground: 0 0% 100%; /* Pure White - 100% */
 
-  --accent: 7 76% 55%;
+  --accent: 15 85% 55%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 203 15% 45%;
-  --input: 203 15% 45%;
-  --ring: 7 76% 55%;
+  --border: 200 35% 38%;
+  --input: 200 35% 38%;
+  --ring: 15 85% 55%;
+
+  /* Header & Footer - Lighter Teal */
+  --header-footer: 200 35% 28%;
 
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: 203 15% 35%;
+  --background: 200 35% 18%;
   --foreground: 0 0% 100%;
 
-  --card: 203 15% 30%;
+  --card: 200 35% 26%;
   --card-foreground: 0 0% 100%;
-  --popover: 203 15% 40%;
+  --popover: 200 35% 33%;
   --popover-foreground: 0 0% 100%;
 
-  --primary: 7 76% 55%;
+  --primary: 15 85% 55%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 90 57% 43%;
-  --secondary-foreground: 0 0% 100%;
+  --secondary: 40 85% 55%;
+  --secondary-foreground: 0 0% 20%;
 
-  --muted: 203 15% 25%;
+  --green: 120 50% 45%;
+  --green-foreground: 0 0% 100%;
+
+  --muted: 200 35% 12%;
   --muted-foreground: 0 0% 100%;
 
-  --accent: 7 76% 55%;
+  --accent: 15 85% 55%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 203 15% 45%;
-  --input: 203 15% 45%;
-  --ring: 7 76% 55%;
+  --border: 200 35% 38%;
+  --input: 200 35% 38%;
+  --ring: 15 85% 55%;
+
+  --header-footer: 200 35% 28%;
 }
 
 @layer base {
@@ -105,6 +119,14 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold text-foreground;
+  }
+  
+  header {
+    background-color: hsl(var(--header-footer));
+  }
+  
+  footer {
+    background-color: hsl(var(--header-footer));
   }
 }
 

@@ -197,17 +197,18 @@ export default function Home() {
               <p className="text-muted-foreground mb-8 text-lg">
                 {siteContent.home.recipeSubtitle}
               </p>
-              <Button size="lg" className="w-fit rounded-full bg-primary hover:bg-primary/90 text-white">
-                {siteContent.home.tryRecipeButton} <ChevronRight className="ml-2 w-4 h-4" />
+              <Button asChild size="lg" className="w-fit rounded-full bg-green hover:bg-green/90 text-white">
+                <a href={siteContent.home.tasteyLink} target="_blank" rel="noopener noreferrer">
+                  {siteContent.home.tryRecipeButton} <ChevronRight className="ml-2 w-4 h-4" />
+                </a>
               </Button>
             </div>
             <div className="md:w-1/2 bg-muted relative min-h-[300px]">
                <img 
                 src={atmosphereImage}
                 alt="Cooking atmosphere"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-card to-transparent" />
             </div>
           </div>
         </div>
@@ -218,7 +219,7 @@ export default function Home() {
         <div className="container mx-auto px-4 flex justify-center">
           <div className="w-full max-w-3xl h-32 border-2 border-dashed border-border rounded-lg flex items-center justify-center text-muted-foreground text-sm uppercase tracking-widest" id="ad-banner-bottom" data-testid="ad-banner-bottom">
             {/* Partner Content / Ad Space - Customizable */}
-            Partner Content
+            {siteContent.home.partnerContent}
           </div>
         </div>
       </section>

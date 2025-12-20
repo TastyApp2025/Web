@@ -17,7 +17,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90">
+      <header className="sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-opacity-90">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="font-display font-black text-3xl md:text-4xl text-primary tracking-tight hover:opacity-80 transition-opacity">
             {siteContent.siteTitle}
@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 {link.label}
               </Link>
             ))}
-            <Button size="sm" className="rounded-full bg-primary hover:bg-primary/90 text-white shadow-md">
+            <Button size="sm" className="rounded-full bg-green hover:bg-green/90 text-white shadow-md">
               {siteContent.recipeAppButton}
             </Button>
           </nav>
@@ -74,7 +74,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   {link.label}
                 </Link>
               ))}
-              <Button className="w-full rounded-full bg-primary hover:bg-primary/90 text-white">
+              <Button className="w-full rounded-full bg-green hover:bg-green/90 text-white">
                 {siteContent.recipeAppButton}
               </Button>
             </nav>
@@ -86,7 +86,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="bg-secondary/15 border-t border-border py-12">
+      <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -113,28 +113,52 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <h4 className="font-bold font-display mb-4">{siteContent.footer.connectTitle}</h4>
               <div className="flex gap-3">
                 <a 
-                  href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  href={siteContent.contact.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
                   data-testid="link-youtube"
                   aria-label="YouTube"
                 >
-                  <Youtube size={18} strokeWidth={2.5} />
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-red-600">
+                    <Youtube size={20} />
+                  </div>
                 </a>
                 <a 
-                  href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  href={siteContent.contact.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
                   data-testid="link-instagram"
                   aria-label="Instagram"
                 >
-                  <Instagram size={18} strokeWidth={2.5} />
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-pink-600">
+                    <Instagram size={20} />
+                  </div>
                 </a>
                 <a 
-                  href="#" 
-                  className="p-2.5 bg-white rounded-full border border-border text-red-500 hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md"
+                  href={siteContent.contact.tiktokUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center"
                   data-testid="link-tiktok"
                   aria-label="TikTok"
                 >
-                  <Video size={18} strokeWidth={2.5} />
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    </svg>
+                  </div>
                 </a>
               </div>
             </div>
