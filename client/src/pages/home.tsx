@@ -2,7 +2,9 @@ import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Play, ChevronRight, Utensils, TrendingUp, Shield, BarChart3, Code2, Loader } from "lucide-react";
+import { Link } from "wouter";
 import { useYouTubeVideos, getYouTubeWatchUrl, formatPublishDate, getYouTubeChannelUrl } from "@/hooks/use-youtube";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { siteContent } from "@/data/site-content";
 import heroImage from "@assets/generated_images/professional_chef_plating_south_african_food.png";
 import atmosphereImage from "@assets/generated_images/south_african_dining_atmosphere.png";
@@ -11,9 +13,30 @@ const YOUTUBE_CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID || '';
 
 export default function Home() {
   const { videos, loading, error } = useYouTubeVideos(4);
+  usePageMeta({
+    title: siteContent.home.metaTitle,
+    description: siteContent.home.metaDescription,
+  });
 
   return (
     <Layout>
+      {/* Top Ad Banner - Hidden but detectable for Google AdSense */}
+      <div className="hidden" id="ad-banner-top" data-testid="ad-banner-top">
+        <div className="bg-slate-700 py-4 px-4">
+          <div className="container mx-auto">
+            {/* Google AdSense Ad Unit - Replace with your ad code */}
+            <div 
+              id="google-ads-top"
+              className="adsbygoogle"
+              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+              data-ad-slot="1234567890"
+              data-ad-format="horizontal"
+              data-full-width-responsive="true"
+            ></div>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -34,11 +57,15 @@ export default function Home() {
             {siteContent.home.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-            <Button size="lg" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg transform hover:-translate-y-1 transition-all">
-              {siteContent.home.watchButton}
+            <Button asChild size="lg" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg transform hover:-translate-y-1 transition-all">
+              <a href={siteContent.contact.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                {siteContent.home.watchButton}
+              </a>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all">
-              {siteContent.home.favouritesButton}
+            <Button asChild size="lg" variant="outline" className="rounded-full text-base h-12 px-8 w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all">
+              <Link href="/favourites">
+                {siteContent.home.favouritesButton}
+              </Link>
             </Button>
           </div>
         </div>
@@ -214,12 +241,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partner Ad Space */}
+      {/* Partner Ad Space - Google AdSense Ready */}
       <section className="py-12 bg-card">
         <div className="container mx-auto px-4 flex justify-center">
-          <div className="w-full max-w-3xl h-32 border-2 border-dashed border-border rounded-lg flex items-center justify-center text-muted-foreground text-sm uppercase tracking-widest" id="ad-banner-bottom" data-testid="ad-banner-bottom">
-            {/* Partner Content / Ad Space - Customizable */}
-            {siteContent.home.partnerContent}
+          <div className="w-full max-w-3xl" id="ad-banner-bottom" data-testid="ad-banner-bottom">
+            {/* Google AdSense Ad Unit - Replace with your ad code */}
+            <div 
+              id="google-ads-bottom"
+              className="adsbygoogle"
+              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+              data-ad-slot="0987654321"
+              data-ad-format="rectangle"
+              data-full-width-responsive="false"
+            ></div>
+            {/* Fallback if ads don't load */}
+            {!siteContent.home.partnerContent ? null : (
+              <div className="border-2 border-dashed border-border rounded-lg py-12 px-8 text-center">
+                <p className="text-muted-foreground text-sm uppercase tracking-widest">{siteContent.home.partnerContent}</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

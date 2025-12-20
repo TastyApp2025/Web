@@ -1,9 +1,15 @@
 import { Layout } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { siteContent } from "@/data/site-content";
 import aboutImage from "@assets/generated_images/fresh_ingredients_tomato_and_herbs.png";
 
 export default function About() {
+  usePageMeta({
+    title: siteContent.about.metaTitle,
+    description: siteContent.about.metaDescription,
+  });
+
   return (
     <Layout>
       <div className="bg-secondary/30 py-12 md:py-20">

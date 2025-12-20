@@ -4,9 +4,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Mail, Instagram, Youtube } from "lucide-react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { siteContent } from "@/data/site-content";
 
 export default function Contact() {
+  usePageMeta({
+    title: siteContent.contact.metaTitle,
+    description: siteContent.contact.metaDescription,
+  });
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16 max-w-4xl">

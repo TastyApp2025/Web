@@ -4,13 +4,22 @@
 export const siteContent = {
   // Header & Navigation
   siteTitle: "ForYourInfluence",
+  siteUrl: "https://foryourinfluence.com",
   recipeAppButton: "Tastey",
+  
+  // SEO & Schema Data
+  chef: {
+    name: "Wesley",
+    url: "https://foryourinfluence.com/about"
+  },
 
   // Home Page
   home: {
     heroTitle1: "Real Food",
     heroTitle2: "No Hype",
     heroSubtitle: "ForYourInfluence is a South African food experience platform run by a professional chef Wesley. I visit restaurants and takeaways independently, pay for my own food, and share honest insights into the full dining. Alongside this, I offer an AI-powered recipe generator \"Tastey\" to help people cook smarter at home.",
+    metaTitle: "ForYourInfluence | Independent Food Reviews from a South African Chef",
+    metaDescription: "Honest, independent restaurant and takeaway reviews from professional chef Wesley. Self-funded. No sponsorships. Real experiences.",
     watchButton: "Watch Latest Reviews",
     favouritesButton: "My Favourites",
     whyDifferent: "Why I'm Different",
@@ -48,6 +57,8 @@ export const siteContent = {
     title: "Chef's Favourites",
     subtitle: "The spots I keep going back to.",
     emptyState: "No Favourites Yet",
+    metaTitle: "Chef's Favourite Restaurants | ForYourInfluence",
+    metaDescription: "Discover the restaurants and takeaways that a professional chef keeps going back to. Real reviews from Chef Wesley.",
   },
 
   // About Page
@@ -57,12 +68,16 @@ export const siteContent = {
     chefPerspective: "About",
     chefBio1: "As a professional chef, I understand food from the kitchen side. I know the prep, the costs, and the effort that goes into a plate. However, this platform isn't about being overly technical or harsh. It focuses on the real experience of eating out. I consider the atmosphere, service, food taste, and ultimately the value.",
     chefBio2: "Restaurants and takeaways are reviewed differently, based on what they aim to deliver. A fine dining spot has different standards than a street food vendor, but both can be excellent in their own context. All visits are independent. I pay for my own food and do not accept free meals or paid promotions to review or visit restaurants.",
+    metaTitle: "About Chef Wesley | Independent Food Reviews | ForYourInfluence",
+    metaDescription: "Learn about Chef Wesley and his approach to independent, honest restaurant reviews. Professional chef. Self-funded. No sponsorships.",
   },
 
   // Contact Page
   contact: {
     title: "Get in Touch",
     subtitle: "For media enquiries, collaborations, or general questions.",
+    metaTitle: "Contact Us | ForYourInfluence",
+    metaDescription: "Get in touch with Chef Wesley for media enquiries, collaborations, or questions about ForYourInfluence.",
     socialsTitle: "Connect",
     youtube: "YouTube",
     youtubeUrl: "https://www.youtube.com/@ForYourInfluence",
