@@ -1,47 +1,92 @@
 [
   {
     "id": 1,
-    "name": "Addis in Cape Ethiopian Restaurant",
-    "location": "Cape Town, South Africa",
-    "type": "Ethiopian",
-    "description": "Authentic Ethiopian cuisine with traditional injera bread. Great atmosphere and friendly service.",
-    "image": "https://via.placeholder.com/400x300?text=Addis+in+Cape",
-    "mapLink": "https://maps.google.com/maps?q=Addis+in+Cape+Ethiopian+Restaurant+Cape+Town"
+    "name": "Restaurant Name 1",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place1.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
   },
   {
     "id": 2,
-    "name": "Seven Colours Eatery",
-    "location": "Cape Town, South Africa",
-    "type": "South African",
-    "description": "Local South African comfort food with colorful, vibrant flavors. Perfect for casual dining.",
-    "image": "https://via.placeholder.com/400x300?text=Seven+Colours",
-    "mapLink": "https://maps.google.com/maps?q=Seven+Colours+Eatery+Cape+Town"
+    "name": "Restaurant Name 2",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place2.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
   },
   {
     "id": 3,
-    "name": "The Idiot Sandwich Café",
-    "location": "Cape Town, South Africa",
-    "type": "Café",
-    "description": "Creative sandwiches and coffee in a charming, quirky café setting. Great for lunch and coffee breaks.",
-    "image": "https://via.placeholder.com/400x300?text=The+Idiot+Sandwich",
-    "mapLink": "https://maps.google.com/maps?q=The+Idiot+Sandwich+Cafe+Cape+Town"
+    "name": "Restaurant Name 3",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place3.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
   },
   {
     "id": 4,
-    "name": "Andalousse Moroccan Restaurant",
-    "location": "Cape Town, South Africa",
-    "type": "Moroccan",
-    "description": "Authentic Moroccan tagines and couscous. Beautiful ambiance with traditional décor.",
-    "image": "https://via.placeholder.com/400x300?text=Andalousse",
-    "mapLink": "https://maps.google.com/maps?q=Andalousse+Moroccan+Restaurant+Cape+Town"
+    "name": "Restaurant Name 4",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place4.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
   },
   {
     "id": 5,
-    "name": "Addis Red Sea Ethiopian Restaurant",
-    "location": "Cape Town Woodstock, South Africa",
-    "type": "Ethiopian",
-    "description": "Traditional Ethiopian dining experience with family-style serving. Excellent spice blends.",
-    "image": "https://via.placeholder.com/400x300?text=Addis+Red+Sea",
-    "mapLink": "https://maps.google.com/maps?q=Addis+Red+Sea+Ethiopian+Restaurant+Cape+Town+Woodstock"
+    "name": "Restaurant Name 5",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place5.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 6,
+    "name": "Restaurant Name 6",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place6.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 7,
+    "name": "Restaurant Name 7",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place7.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 8,
+    "name": "Restaurant Name 8",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place8.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 9,
+    "name": "Restaurant Name 9",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place9.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
+  },
+  {
+    "id": 10,
+    "name": "Restaurant Name 10",
+    "location": "City, Country",
+    "type": "Cuisine Type",
+    "description": "Add a short description about this restaurant here",
+    "image": "/images/places/place10.jpg",
+    "mapLink": "https://maps.google.com/maps?q=restaurant+address"
   }
 ]

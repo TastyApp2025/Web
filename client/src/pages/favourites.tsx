@@ -3,14 +3,14 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MapPin, Navigation, ImageIcon, X } from "lucide-react";
+import { MapPin, Navigation, ImageIcon, Loader, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearch, useFilter } from "@/hooks/use-search";
 import { siteContent } from "@/data/site-content";
 
 interface PlaceDetails {
-  id: number;
+  id: string;
   name: string;
   location: string;
   type: string;
@@ -22,10 +22,20 @@ interface PlaceDetails {
   website?: string;
 }
 
+// Add your restaurant search queries here
+const RESTAURANT_QUERIES = [
+  "Addis in Cape Ethiopian Restaurant Cape Town",
+  "Seven Colours Eatery Cape Town",
+  "The Idiot Sandwich Café Cape Town",
+  "Andalousse Moroccan Restaurant Cape Town",
+  "Addis Red Sea Ethiopian Restaurant Cape Town Woodstock",
+];
+
 export default function Favourites() {
   const [restaurants, setRestaurants] = useState<PlaceDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [apiErrors, setApiErrors] = useState<Array<{error: string; query: string}>>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
@@ -71,14 +81,37 @@ export default function Favourites() {
         setLoading(true);
         setError(null);
 
-        const response = await fetch("/data/favourites.json");
+        const response = await fetch("/api/places/batch", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ queries: RESTAURANT_QUERIES }),
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch restaurants");
         }
 
         const data = await response.json();
-        setRestaurants(data);
+        const validRestaurants = data.filter(
+          (place: any) => !place.error && place.name
+        );
+        
+        // Capture any errors for display
+        const errors = data.filter((place: any) => place.error);
+        if (errors.length > 0) {
+          console.error("API errors from batch request:", errors);
+          setApiErrors(errors);
+          
+          // If no valid restaurants, set error message showing what failed
+          if (validRestaurants.length === 0) {
+            const errorMessages = errors.map((e: any) => e.error).join("; ");
+            setError(`Unable to load restaurants: ${errorMessages}`);
+          }
+        }
+        
+        setRestaurants(validRestaurants);
       } catch (err) {
         console.error("Error fetching restaurants:", err);
         setError(
@@ -145,13 +178,31 @@ export default function Favourites() {
                 <p className="text-sm font-semibold text-red-800 mb-3">API Errors:</p>
                 <ul className="space-y-2">
                   {apiErrors.map((err, idx) => (
-                    <li key={idx} className=md mx-auto">
+                    <li key={idx} className="text-xs text-red-700">
+                      <strong>{err.query}:</strong> {err.error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            <p className="text-muted-foreground text-xs mt-6">
+              Common issues: Places API not enabled, billing not set up, or API key restrictions
+            </p>
+          </div>
+        </div>
+      ) : restaurants.length === 0 ? (
+        <div className="container mx-auto px-4 py-20">
+          <div className="text-center max-w-md mx-auto">
             <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
               <MapPin size={32} className="text-primary/60" />
             </div>
             <h2 className="font-display font-bold text-2xl">
               {siteContent.favourites.emptyState}
-            </h2
+            </h2>
+          </div>
+        </div>
+      ) : (
         <div className="container mx-auto px-4 py-12">
           {/* Search and Filter Section */}
           <div className="mb-8 space-y-4">
