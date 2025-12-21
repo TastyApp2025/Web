@@ -22,6 +22,7 @@ async function axiosWithRetry<T>(
         axiosError.response.status !== 429 &&
         axiosError.response.status < 500
       ) {
+        console.error(`API returned ${axiosError.response.status} error:`, JSON.stringify(axiosError.response.data, null, 2));
         throw error;
       }
 
@@ -167,10 +168,10 @@ export async function searchPlace(query: string): Promise<PlaceDetails | null> {
     return placeDetails;
   } catch (error) {
     const axiosError = error as AxiosError;
-    console.error(
-      "Google Maps API error:",
-      axiosError.response?.data || axiosError.message
-    );
+    console.error("Google Maps API error for query:", query);
+    console.error("Status:", axiosError.response?.status);
+    console.error("Data:", JSON.stringify(axiosError.response?.data, null, 2));
+    console.error("Message:", axiosError.message);
     throw error;
   }
 }
