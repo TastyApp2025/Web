@@ -279,14 +279,4 @@
   color: hsl(0 0% 35%); /* Medium-dark grey for description */
 }
 
-.card-container[data-section-title="The"] .card-title {
-  color: hsl(15 85% 55%); /* Orange - matching primary color */
-}
 
-.card-container[data-section-title="The"] .card-location {
-  color: hsl(15 85% 45%); /* Slightly darker orange */
-}
-
-.card-container[data-section-title="The"] .card-description {
-  color: hsl(15 85% 40%); /* Even darker orange for better readability */
-}
