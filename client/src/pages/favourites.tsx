@@ -141,24 +141,17 @@ export default function Favourites() {
       {loading ? (
         <div className="container mx-auto px-4 py-12">
           {/* Loading Skeleton Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Card key={i} className="overflow-hidden border-2 border-border">
-                <CardContent className="p-0">
-                  <div className="w-full h-48 bg-muted">
-                    <Skeleton className="w-full h-full rounded-none" />
-                  </div>
-                </CardContent>
-                <CardFooter className="flex-col items-start gap-3 p-4">
+              <div key={i} className="flex gap-4">
+                <Skeleton className="w-40 h-40 rounded-lg flex-shrink-0" />
+                <div className="flex-1 space-y-3">
                   <Skeleton className="h-6 w-3/4" />
                   <Skeleton className="h-4 w-full" />
                   <Skeleton className="h-4 w-2/3" />
-                  <div className="flex gap-2 w-full pt-2">
-                    <Skeleton className="h-8 flex-1" />
-                    <Skeleton className="h-8 flex-1" />
-                  </div>
-                </CardFooter>
-              </Card>
+                  <Skeleton className="h-8 w-24" />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -275,7 +268,7 @@ export default function Favourites() {
             ) : null}
           </div>
 
-          {/* Results */}
+          {/* Results - Horizontal Scrollable Carousel */}
           {filteredRestaurants.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
@@ -285,62 +278,73 @@ export default function Favourites() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRestaurants.map((place) => (
-                <Card
-                  key={place.id}
-                  className="overflow-hidden hover:shadow-lg transition-shadow border-none shadow-md bg-white flex flex-col"
-                >
-                  <div className="h-48 overflow-hidden relative bg-muted">
-                    {place.image ? (
-                      <img
-                        src={place.image}
-                        alt={place.name}
-                        className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
-                        <div className="text-center">
-                          <ImageIcon size={32} className="mx-auto mb-2" />
-                          <p className="text-xs">No image available</p>
+            <div className="flex flex-col gap-6">
+              <div className="w-full overflow-x-auto scrollbar-hide">
+                <div className="flex gap-6 pb-4 w-max">
+                  {filteredRestaurants.map((place) => (
+                    <Card
+                      key={place.id}
+                      className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white hover:translate-y-[-4px] flex-shrink-0 w-96 flex flex-col"
+                    >
+                      {/* Image Section */}
+                      <div className="w-full h-56 overflow-hidden relative bg-muted">
+                        {place.image ? (
+                          <img
+                            src={place.image}
+                            alt={place.name}
+                            className="w-full h-full object-cover transition-transform hover:scale-110 duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
+                            <div className="text-center">
+                              <ImageIcon size={32} className="mx-auto mb-2" />
+                              <p className="text-sm">No image</p>
+                            </div>
+                          </div>
+                        )}
+                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+                          {place.type}
                         </div>
                       </div>
-                    )}
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
-                      {place.type}
-                    </div>
-                  </div>
-                  <CardContent className="p-6 flex-1">
-                    <h3 className="font-display font-bold text-xl mb-1">
-                      {place.name}
-                    </h3>
-                    <div className="flex items-center text-muted-foreground text-sm mb-3">
-                      <MapPin size={14} className="mr-1" />
-                      {place.location}
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      {place.description}
-                    </p>
-                    {place.rating && (
-                      <div className="mt-2 text-sm font-semibold text-amber-600">
-                        ★ {place.rating.toFixed(1)} rating
+
+                      {/* Content Section */}
+                      <div className="flex-1 flex flex-col p-6">
+                        <div className="flex-1">
+                          <h3 className="font-display font-bold text-lg mb-2 line-clamp-2">
+                            {place.name}
+                          </h3>
+                          <div className="flex items-center text-muted-foreground text-xs mb-3">
+                            <MapPin size={14} className="mr-1.5 flex-shrink-0" />
+                            <span className="line-clamp-1">{place.location}</span>
+                          </div>
+                          <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mb-3">
+                            {place.description}
+                          </p>
+                          {place.rating && (
+                            <div className="text-sm font-semibold text-amber-600 flex items-center">
+                              <span className="text-amber-500">★</span>
+                              <span className="ml-1">{place.rating.toFixed(1)}</span>
+                            </div>
+                          )}
+                        </div>
+                        <Button className="w-full rounded-lg gap-2 mt-4 h-10" variant="secondary" asChild>
+                          <a
+                            href={place.mapLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Navigation size={16} />
+                            Directions
+                          </a>
+                        </Button>
                       </div>
-                    )}
-                  </CardContent>
-                  <CardFooter className="p-6 pt-0">
-                    <Button className="w-full rounded-full gap-2" variant="secondary" asChild>
-                      <a
-                        href={place.mapLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Navigation size={16} />
-                        Get Directions
-                      </a>
-                    </Button>
-                  </CardFooter>
-                </Card>
-              ))}
+                    </Card>
+                  ))}
+                </div>
+              </div>
+              <div className="text-center text-xs text-muted-foreground">
+                Scroll left/right to explore more →
+              </div>
             </div>
           )}
         </div>
@@ -348,4 +352,3 @@ export default function Favourites() {
     </Layout>
   );
 }
-

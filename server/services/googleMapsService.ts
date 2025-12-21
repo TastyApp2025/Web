@@ -80,6 +80,12 @@ interface PhotoMediaResponse {
 const API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 const BASE_URL = "https://places.googleapis.com/v1";
 
+// Log API key status on startup (without exposing the full key)
+console.log(`[Google Maps Service] API Key Loaded: ${API_KEY ? `Yes (length: ${API_KEY.length})` : "NO - NOT SET"}`);
+if (!API_KEY) {
+  console.error("[Google Maps Service] CRITICAL: GOOGLE_MAPS_API_KEY environment variable is NOT set!");
+}
+
 export async function searchPlace(query: string): Promise<PlaceDetails | null> {
   if (!API_KEY) {
     throw new Error("GOOGLE_MAPS_API_KEY environment variable is not set");
@@ -170,8 +176,17 @@ export async function searchPlace(query: string): Promise<PlaceDetails | null> {
     const axiosError = error as AxiosError;
     console.error("Google Maps API error for query:", query);
     console.error("Status:", axiosError.response?.status);
-    console.error("Data:", JSON.stringify(axiosError.response?.data, null, 2));
+    console.error("Full Error Response:", JSON.stringify(axiosError.response?.data, null, 2));
     console.error("Message:", axiosError.message);
+    
+    // Log the exact error from Google to help debug
+    const googleError = (axiosError.response?.data as any)?.error;
+    if (googleError) {
+      console.error("Google Error Code:", googleError.code);
+      console.error("Google Error Message:", googleError.message);
+      console.error("Google Error Details:", googleError.details);
+    }
+    
     throw error;
   }
 }
