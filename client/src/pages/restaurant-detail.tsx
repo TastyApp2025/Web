@@ -80,46 +80,8 @@ export default function RestaurantDetail() {
     fetchRestaurant();
   }, [id]);
 
-  if (loading) {
-    return (
-      <Layout>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <p className="text-muted-foreground">Loading restaurant details...</p>
-        </div>
-      </Layout>
-    );
-  }
-
-  if (error) {
-    return (
-      <Layout>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl font-bold mb-4 text-red-600">Error</h1>
-          <p className="text-muted-foreground mb-6">{error}</p>
-          <p className="text-sm text-muted-foreground mb-6">ID: {id}</p>
-          <Button asChild>
-            <Link href="/favourites">Back to Restaurants</Link>
-          </Button>
-        </div>
-      </Layout>
-    );
-  }
-
-  if (!restaurant) {
-    return (
-      <Layout>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl font-bold mb-4">Restaurant not found</h1>
-          <Button asChild>
-            <Link href="/favourites">Back to Restaurants</Link>
-          </Button>
-        </div>
-      </Layout>
-    );
-  }
-
   // Build structured data safely
-  const structuredData = {
+  const structuredData = restaurant ? {
     "@context": "https://schema.org/",
     "@type": "Restaurant",
     name: restaurant.name,
@@ -138,15 +100,40 @@ export default function RestaurantDetail() {
         reviewCount: "1",
       },
     }),
-  };
+  } : undefined;
 
   usePageMeta({
-    title: `${restaurant.name} - Restaurant Review | ForYourInfluence`,
-    description: `Read Chef Wesley's review of ${restaurant.name}, a ${restaurant.type} restaurant in ${restaurant.location}. Honest, self-funded food reviews.`,
+    title: restaurant ? `${restaurant.name} - Restaurant Review | ForYourInfluence` : "Restaurant Review | ForYourInfluence",
+    description: restaurant ? `Read Chef Wesley's review of ${restaurant.name}, a ${restaurant.type} restaurant in ${restaurant.location}. Honest, self-funded food reviews.` : "Read Chef Wesley's honest, self-funded food reviews.",
     url: `https://www.foryourinfluence.co.za/restaurant/${id}`,
-    keywords: `${restaurant.name} review, ${restaurant.name} ${restaurant.location}, ${restaurant.type} restaurant ${restaurant.location}, Cape Town food reviews`,
+    keywords: restaurant ? `${restaurant.name} review, ${restaurant.name} ${restaurant.location}, ${restaurant.type} restaurant ${restaurant.location}, Cape Town food reviews` : "restaurant review, food reviews, South Africa",
     structuredData,
   });
+
+  if (loading) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <p className="text-muted-foreground">Loading restaurant details...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error || !restaurant) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <h1 className="text-2xl font-bold mb-4 text-red-600">Error</h1>
+          <p className="text-muted-foreground mb-6">{error || "Restaurant not found"}</p>
+          <p className="text-sm text-muted-foreground mb-6">ID: {id}</p>
+          <Button asChild>
+            <Link href="/favourites">Back to Restaurants</Link>
+          </Button>
+        </div>
+      </Layout>
+    );
+  }
 
   const priceRangeDisplay = {
     "$": "Budget-Friendly",
