@@ -28,6 +28,7 @@ export default function RestaurantDetail() {
   const { id } = useParams();
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Fetch restaurant data
@@ -38,10 +39,14 @@ export default function RestaurantDetail() {
         if (response.ok) {
           const data = await response.json();
           setRestaurant(data);
+          setError(null);
         } else {
-          console.error("Restaurant not found");
+          setError(`Failed to load restaurant (${response.status})`);
+          console.error("Restaurant not found:", response.status);
         }
       } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : "Unknown error";
+        setError(`Error fetching restaurant: ${errorMsg}`);
         console.error("Error fetching restaurant:", error);
       } finally {
         setLoading(false);
@@ -56,6 +61,21 @@ export default function RestaurantDetail() {
       <Layout>
         <div className="container mx-auto px-4 py-12 text-center">
           <p className="text-muted-foreground">Loading restaurant details...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <h1 className="text-2xl font-bold mb-4 text-red-600">Error</h1>
+          <p className="text-muted-foreground mb-6">{error}</p>
+          <p className="text-sm text-muted-foreground mb-6">ID: {id}</p>
+          <Button asChild>
+            <Link href="/favourites">Back to Restaurants</Link>
+          </Button>
         </div>
       </Layout>
     );
