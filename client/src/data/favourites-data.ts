@@ -56,14 +56,5 @@ export const FAVOURITES: Place[] = [
     description: "Authentic Moroccan cuisine with rich spices and warm hospitality. Enjoy traditional tagines, couscous, and mint tea in an elegant setting inspired by North African culture.",
     image: "/attached_assets/generated_images/professional_chef_plating_south_african_food.png",
     mapLink: "https://maps.app.goo.gl/USyLgBYPMFucjEir8"
-  },
-  {
-    id: 5,
-    name: "Addis Red Sea Ethiopian Restaurant",
-    location: "Cape Town, Woodstock",
-    type: "Ethiopian",
-    description: "Another excellent branch showcasing authentic Ethiopian cuisine. Savor traditional flavors in a welcoming atmosphere that brings you closer to Ethiopian food culture.",
-    image: "/attached_assets/generated_images/south_african_dining_atmosphere.png",
-    mapLink: "https://maps.app.goo.gl/K1SsWXsJ4G4FX7kh9"
   }
 ];
