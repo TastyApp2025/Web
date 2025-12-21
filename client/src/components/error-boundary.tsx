@@ -71,13 +71,14 @@ class ErrorBoundary extends React.Component<Props, State> {
             <div className="flex gap-3 justify-center">
               <Button
                 onClick={this.handleReset}
-                className="rounded-full bg-primary hover:bg-primary/90"
+                className="rounded-full bg-primary hover:bg-primary/90 text-white"
               >
                 Try Again
               </Button>
               <Button
                 onClick={() => window.location.href = "/"}
-                className="rounded-full border border-primary text-primary hover:bg-primary/10"
+                variant="outline"
+                className="rounded-full"
               >
                 Go Home
               </Button>

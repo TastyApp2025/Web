@@ -94,29 +94,41 @@ export default function RestaurantDetail() {
     );
   }
 
+  // Build structured data safely
+  const structuredData: any = {
+    "@context": "https://schema.org/",
+    "@type": "Restaurant",
+    name: restaurant.name,
+    image: restaurant.image,
+    description: restaurant.description,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: restaurant.address || restaurant.location,
+    },
+  };
+
+  if (restaurant.phone) {
+    structuredData.telephone = restaurant.phone;
+  }
+
+  if (restaurant.website) {
+    structuredData.url = restaurant.website;
+  }
+
+  if (restaurant.rating) {
+    structuredData.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: restaurant.rating.toString(),
+      reviewCount: "1",
+    };
+  }
+
   usePageMeta({
     title: `${restaurant.name} - Restaurant Review | ForYourInfluence`,
     description: `${restaurant.name} - ${restaurant.type} restaurant in ${restaurant.location}. Read an honest, independent review from professional chef Wesley.`,
     url: `https://www.foryourinfluence.co.za/restaurant/${id}`,
     keywords: `${restaurant.name}, restaurant review, ${restaurant.type}, Cape Town`,
-    structuredData: {
-      "@context": "https://schema.org/",
-      "@type": "Restaurant",
-      name: restaurant.name,
-      image: restaurant.image,
-      description: restaurant.description,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: restaurant.address || restaurant.location,
-      },
-      telephone: restaurant.phone || undefined,
-      url: restaurant.website || undefined,
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: restaurant.rating?.toString(),
-        reviewCount: "1",
-      },
-    },
+    structuredData,
   });
 
   const priceRangeDisplay = {
