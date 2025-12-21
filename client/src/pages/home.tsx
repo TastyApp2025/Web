@@ -68,7 +68,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImage} 
-            alt="Chef plating food" 
+            alt="Image of Host of ForYourinfluence YouTube channel Chef Wesley" 
             className="w-full h-full object-cover brightness-100"
             data-testid="hero-image"
           />
@@ -264,7 +264,7 @@ export default function Home() {
             <div className="md:w-1/2 bg-muted relative min-h-[300px]">
                <img 
                 src={atmosphereImage}
-                alt="Cooking atmosphere"
+                alt="Image of Tastey App A.I Recipe Generator"
                 className="w-full h-full object-cover"
               />
             </div>

@@ -8,6 +8,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearch, useFilter } from "@/hooks/use-search";
 import { siteContent } from "@/data/site-content";
+import { Link } from "wouter";
 
 interface PlaceDetails {
   id: string;
@@ -348,7 +349,7 @@ export default function Favourites() {
                         {place.image ? (
                           <img
                             src={place.image}
-                            alt={place.name}
+                            alt={place.altText || place.name}
                             className="w-full h-full object-cover transition-transform hover:scale-110 duration-500"
                           />
                         ) : (
@@ -384,7 +385,12 @@ export default function Favourites() {
                             </div>
                           )}
                         </div>
-                        <Button className="w-full rounded-lg gap-2 mt-4 h-10" variant="secondary" asChild>
+                        <Button className="w-full rounded-lg gap-2 mt-4 h-10" variant="default" asChild>
+                          <Link href={`/restaurant/${place.id}`}>
+                            Read Full Review
+                          </Link>
+                        </Button>
+                        <Button className="w-full rounded-lg gap-2 mt-2 h-10" variant="secondary" asChild>
                           <a
                             href={place.mapLink}
                             target="_blank"

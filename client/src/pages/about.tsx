@@ -76,7 +76,7 @@ export default function About() {
           <div className="relative rounded-2xl overflow-hidden shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500">
             <img 
               src={aboutImage} 
-              alt="Fresh Ingredients" 
+              alt="Image of Chef Wesley in Chef Uniform" 
               className="w-full h-auto object-cover"
             />
           </div>
