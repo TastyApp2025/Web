@@ -3,8 +3,8 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MapPin, Navigation, ImageIcon, Loader, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { MapPin, Navigation, ImageIcon, Loader, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { useSearch, useFilter } from "@/hooks/use-search";
 import { siteContent } from "@/data/site-content";
@@ -38,6 +38,10 @@ export default function Favourites() {
   const [apiErrors, setApiErrors] = useState<Array<{error: string; query: string}>>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   // Apply search and filter
   const filteredRestaurants = useFilter(
@@ -124,6 +128,40 @@ export default function Favourites() {
 
     fetchRestaurants();
   }, []);
+
+  // Scroll handlers for carousel
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 1;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <Layout>
@@ -279,9 +317,27 @@ export default function Favourites() {
             </div>
           ) : (
             <div className="flex flex-col gap-6">
-              <div className="w-full overflow-x-auto scrollbar-hide">
-                <div className="flex gap-4 pb-4 w-max md:gap-6">
-                  {filteredRestaurants.map((place) => (
+              <div className="relative group">
+                {/* Left Arrow Button */}
+                <button
+                  onClick={() => scroll("left")}
+                  className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/90 text-white rounded-full p-2 shadow-lg transition-all duration-200"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+
+                {/* Carousel Container */}
+                <div
+                  ref={scrollContainerRef}
+                  className="w-full overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+                  onMouseDown={handleMouseDown}
+                  onMouseLeave={handleMouseLeave}
+                  onMouseUp={handleMouseUp}
+                  onMouseMove={handleMouseMove}
+                >
+                  <div className="flex gap-4 pb-4 w-max md:gap-6">
+                    {filteredRestaurants.map((place) => (
                     <Card
                       key={place.id}
                       className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white hover:translate-y-[-4px] flex-shrink-0 w-72 sm:w-80 md:w-96 flex flex-col card-container"
@@ -341,7 +397,17 @@ export default function Favourites() {
                       </div>
                     </Card>
                   ))}
+                  </div>
                 </div>
+
+                {/* Right Arrow Button */}
+                <button
+                  onClick={() => scroll("right")}
+                  className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/90 text-white rounded-full p-2 shadow-lg transition-all duration-200"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight size={24} />
+                </button>
               </div>
               <div className="text-center text-xs text-body">
                 Scroll left/right to explore more →
