@@ -83,8 +83,8 @@ export default function Contact() {
     <Layout>
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6">{siteContent.contact.title}</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6 heading-page">{siteContent.contact.title}</h1>
+          <p className="text-lg text-description max-w-2xl mx-auto">
             {siteContent.contact.subtitle}
           </p>
         </div>
@@ -92,13 +92,13 @@ export default function Contact() {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-1 space-y-6">
             <Card className="p-6 border-none shadow-md bg-secondary/30">
-              <h3 className="font-bold mb-4">{siteContent.contact.socialsTitle}</h3>
+              <h3 className="font-bold mb-4 heading-subsection">{siteContent.contact.socialsTitle}</h3>
               <div className="space-y-4">
                 <a 
                   href={siteContent.contact.youtubeUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
+                  className="flex items-center gap-3 text-link hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
                   aria-label={`Follow on ${siteContent.contact.youtube}`}
                 >
                   <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-red-600">
@@ -110,7 +110,7 @@ export default function Contact() {
                   href={siteContent.contact.instagramUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
+                  className="flex items-center gap-3 text-link hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
                   aria-label={`Follow on ${siteContent.contact.instagram}`}
                 >
                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-pink-600">
@@ -122,7 +122,7 @@ export default function Contact() {
                   href={siteContent.contact.tiktokUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
+                  className="flex items-center gap-3 text-link hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1"
                   aria-label={`Follow on ${siteContent.contact.tiktok}`}
                 >
                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-black">
@@ -171,7 +171,7 @@ export default function Contact() {
               <form className="space-y-6" onSubmit={handleSubmit} aria-label="Contact form">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="contact-name" className="text-sm font-medium">{siteContent.contact.nameLabel}</label>
+                    <label htmlFor="contact-name" className="text-sm font-medium text-label">{siteContent.contact.nameLabel}</label>
                     <Input 
                       id="contact-name"
                       name="name" 
@@ -184,7 +184,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="contact-email" className="text-sm font-medium">{siteContent.contact.emailLabel}</label>
+                    <label htmlFor="contact-email" className="text-sm font-medium text-label">{siteContent.contact.emailLabel}</label>
                     <Input 
                       id="contact-email"
                       name="email" 
@@ -199,7 +199,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-subject" className="text-sm font-medium">{siteContent.contact.subjectLabel}</label>
+                  <label htmlFor="contact-subject" className="text-sm font-medium text-label">{siteContent.contact.subjectLabel}</label>
                   <Input 
                     id="contact-subject"
                     name="subject" 
@@ -212,7 +212,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="contact-message" className="text-sm font-medium">{siteContent.contact.messageLabel}</label>
+                  <label htmlFor="contact-message" className="text-sm font-medium text-label">{siteContent.contact.messageLabel}</label>
                   <Textarea 
                     id="contact-message"
                     name="message" 

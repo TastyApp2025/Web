@@ -129,10 +129,10 @@ export default function Favourites() {
     <Layout>
       <div className="bg-primary/5 py-12">
         <div className="container mx-auto px-4">
-          <h1 className="font-display font-bold text-4xl mb-2">
+          <h1 className="font-display font-bold text-4xl mb-2 heading-page">
             {siteContent.favourites.title}
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-description">
             {siteContent.favourites.subtitle}
           </p>
         </div>
@@ -200,7 +200,7 @@ export default function Favourites() {
           {/* Search and Filter Section */}
           <div className="mb-8 space-y-4">
             <div>
-              <label htmlFor="search-restaurants" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="search-restaurants" className="block text-sm font-medium text-label mb-2">
                 Search
               </label>
               <div className="relative">
@@ -227,7 +227,7 @@ export default function Favourites() {
 
             {uniqueTypes.length > 0 && (
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-sm font-medium text-label mb-2">
                   Filter by Type
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -262,7 +262,7 @@ export default function Favourites() {
 
             {/* Results count */}
             {searchTerm || selectedType ? (
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-body">
                 Found {filteredRestaurants.length} of {restaurants.length} restaurants
               </p>
             ) : null}
@@ -271,7 +271,7 @@ export default function Favourites() {
           {/* Results - Horizontal Scrollable Carousel */}
           {filteredRestaurants.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">
+              <p className="text-body">
                 {searchTerm || selectedType
                   ? "No restaurants match your search or filter."
                   : siteContent.favourites.emptyState}
@@ -280,14 +280,15 @@ export default function Favourites() {
           ) : (
             <div className="flex flex-col gap-6">
               <div className="w-full overflow-x-auto scrollbar-hide">
-                <div className="flex gap-6 pb-4 w-max">
+                <div className="flex gap-4 pb-4 w-max md:gap-6">
                   {filteredRestaurants.map((place) => (
                     <Card
                       key={place.id}
-                      className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white hover:translate-y-[-4px] flex-shrink-0 w-96 flex flex-col"
+                      className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white hover:translate-y-[-4px] flex-shrink-0 w-72 sm:w-80 md:w-96 flex flex-col card-container"
+                      data-section-title={place.name.split(" ")[0]}
                     >
                       {/* Image Section */}
-                      <div className="w-full h-56 overflow-hidden relative bg-muted">
+                      <div className="w-full h-40 sm:h-48 md:h-56 overflow-hidden relative bg-muted">
                         {place.image ? (
                           <img
                             src={place.image}
@@ -308,16 +309,16 @@ export default function Favourites() {
                       </div>
 
                       {/* Content Section */}
-                      <div className="flex-1 flex flex-col p-6">
+                      <div className="flex-1 flex flex-col p-4 sm:p-5 md:p-6">
                         <div className="flex-1">
-                          <h3 className="font-display font-bold text-lg mb-2 line-clamp-2">
+                          <h3 className="font-display font-bold text-base sm:text-lg mb-2 line-clamp-2 card-title">
                             {place.name}
                           </h3>
-                          <div className="flex items-center text-foreground text-xs mb-3">
+                          <div className="flex items-center text-xs mb-3 card-location">
                             <MapPin size={14} className="mr-1.5 flex-shrink-0" />
                             <span className="line-clamp-1">{place.location}</span>
                           </div>
-                          <p className="text-sm text-foreground line-clamp-3 leading-relaxed mb-3">
+                          <p className="text-xs sm:text-sm line-clamp-3 leading-relaxed mb-3 card-description">
                             {place.description}
                           </p>
                           {place.rating && (
@@ -342,7 +343,7 @@ export default function Favourites() {
                   ))}
                 </div>
               </div>
-              <div className="text-center text-xs text-muted-foreground">
+              <div className="text-center text-xs text-body">
                 Scroll left/right to explore more →
               </div>
             </div>

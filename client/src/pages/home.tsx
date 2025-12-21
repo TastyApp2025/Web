@@ -74,12 +74,12 @@ export default function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/70 to-transparent" />
         </div>
-        <div className="container relative z-10 px-4 text-center text-white max-w-4xl mx-auto">
-          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg">
+        <div className="container relative z-10 px-4 text-center max-w-4xl mx-auto">
+          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg text-hero">
             {siteContent.home.heroTitle1}<br />
-            <span className="text-primary drop-shadow-md">{siteContent.home.heroTitle2}</span>
+            <span className="text-hero-accent drop-shadow-md">{siteContent.home.heroTitle2}</span>
           </h1>
-          <p className="font-serif text-lg md:text-xl text-white/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
+          <p className="font-serif text-lg md:text-xl text-hero/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
             {siteContent.home.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
@@ -101,8 +101,8 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">{siteContent.home.whyDifferent}</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">{siteContent.home.whyDifferentSubtitle}</p>
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 heading-section">{siteContent.home.whyDifferent}</h2>
+            <p className="text-description max-w-xl mx-auto">{siteContent.home.whyDifferentSubtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {siteContent.home.features.map((item, i) => (
@@ -112,8 +112,8 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-bold font-display text-lg mb-2 text-white">{item.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-bold font-display text-lg mb-2 text-feature-title">{item.title}</h3>
+                <p className="text-feature-desc text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -126,8 +126,8 @@ export default function Home() {
           <div className="mb-12">
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
-                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 text-foreground">{siteContent.home.youtubeSection}</h2>
-                <p className="text-muted-foreground max-w-xl">
+                <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 heading-section">{siteContent.home.youtubeSection}</h2>
+                <p className="text-description max-w-xl">
                   {siteContent.home.youtubeSectionSubtitle}
                 </p>
               </div>
@@ -143,7 +143,7 @@ export default function Home() {
 
           {error && (
             <div className="bg-yellow-900/40 border border-yellow-600/60 rounded-lg p-6 mb-8">
-              <p className="text-yellow-200 text-sm">
+              <p className="text-yellow-200 text-sm text-body">
                 <strong>Setup Required:</strong> {error}. Add your YouTube API key and Channel ID to get started. See README for instructions.
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function Home() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No videos found. Check your YouTube configuration.</p>
+              <p className="text-body">No videos found. Check your YouTube configuration.</p>
             </div>
           )}
           
@@ -219,20 +219,20 @@ export default function Home() {
               <div className="flex gap-4 items-start mb-6">
                 <Code2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" strokeWidth={2.5} />
                 <div>
-                  <h3 className="font-bold font-display text-xl mb-2 text-foreground">Automatic YouTube Updates</h3>
-                  <p className="text-muted-foreground mb-6">
+                  <h3 className="font-bold font-display text-xl mb-2 heading-subsection">Automatic YouTube Updates</h3>
+                  <p className="text-body mb-6">
                     Your latest 4 videos appear here automatically. No manual updates needed.
                   </p>
                   <div className="space-y-3 text-sm">
-                    <p className="font-semibold text-foreground">To enable this on your site:</p>
-                    <ol className="space-y-2 list-decimal list-inside text-muted-foreground">
+                    <p className="font-semibold heading-subsection">To enable this on your site:</p>
+                    <ol className="space-y-2 list-decimal list-inside text-body">
                       <li>Get your YouTube Channel ID from your channel's About section</li>
                       <li>Create a Google Cloud project & enable YouTube Data API v3</li>
                       <li>Generate an API key in Google Cloud Console</li>
                       <li>Copy <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.example</code> to <code className="bg-card px-2 py-1 rounded text-xs font-mono text-foreground">.env.local</code></li>
                       <li>Add your API key and Channel ID to the .env.local file</li>
                     </ol>
-                    <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border">
+                    <p className="text-xs text-body mt-4 pt-4 border-t border-border">
                       Full setup instructions available in the README.md file
                     </p>
                   </div>
@@ -249,10 +249,10 @@ export default function Home() {
           <div className="bg-card border-2 border-primary/40 rounded-3xl overflow-hidden shadow-xl flex flex-col md:flex-row">
             <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
               <span className="text-primary font-bold tracking-wider text-sm mb-2 uppercase">AI Powered</span>
-              <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 text-foreground">
+              <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 heading-section">
                 {siteContent.home.recipeTitle}
               </h2>
-              <p className="text-muted-foreground mb-8 text-lg">
+              <p className="text-description mb-8 text-lg">
                 {siteContent.home.recipeSubtitle}
               </p>
               <Button asChild className="w-fit rounded-full bg-green hover:bg-green/90 text-white px-8 h-12">
@@ -289,7 +289,7 @@ export default function Home() {
               {/* Fallback if ads don't load */}
               {!siteContent.home.partnerContent ? null : (
                 <div className="border-2 border-dashed border-border rounded-lg py-12 px-8 text-center">
-                  <p className="text-muted-foreground text-sm uppercase tracking-widest">{siteContent.home.partnerContent}</p>
+                  <p className="text-body text-sm uppercase tracking-widest">{siteContent.home.partnerContent}</p>
                 </div>
               )}
             </div>

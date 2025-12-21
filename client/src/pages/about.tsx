@@ -64,8 +64,8 @@ export default function About() {
       <div className="bg-secondary/30 py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <Badge variant="outline" className="mb-4 bg-white/50 backdrop-blur">Our Philosophy</Badge>
-          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6">{siteContent.about.title}</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h1 className="font-display font-bold text-4xl md:text-5xl mb-6 heading-page">{siteContent.about.title}</h1>
+          <p className="text-lg text-description max-w-2xl mx-auto">
              {siteContent.about.subtitle}
           </p>
         </div>
@@ -81,8 +81,8 @@ export default function About() {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="font-display font-bold text-3xl">{siteContent.about.chefPerspective}</h2>
-            <div className="prose prose-lg text-muted-foreground">
+            <h2 className="font-display font-bold text-3xl heading-section">{siteContent.about.chefPerspective}</h2>
+            <div className="prose prose-lg text-body">
               <p>
                 {siteContent.about.chefBio1}
               </p>

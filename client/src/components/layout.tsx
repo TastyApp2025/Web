@@ -26,7 +26,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link 
             href="/" 
-            className="font-display font-black text-3xl md:text-4xl text-primary tracking-tight hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
+            className="font-display font-black text-3xl md:text-4xl heading-main tracking-tight hover:opacity-80 transition-opacity focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm"
             role="link"
             onClick={closeMenu}
           >
@@ -42,7 +42,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 className={`text-sm font-medium transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1 ${
                   location === link.href
                     ? "text-primary font-bold"
-                    : "text-muted-foreground"
+                    : "text-link"
                 }`}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}
                 role="link"
@@ -89,7 +89,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   className={`text-lg font-medium py-2 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 ${
                     location === link.href
                       ? "text-primary font-bold"
-                      : "text-muted-foreground hover:text-primary"
+                      : "text-link hover:text-primary"
                   }`}
                   onClick={closeMenu}
                   data-testid={`link-nav-mobile-${link.label.toLowerCase()}`}
@@ -125,14 +125,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="font-display font-bold text-lg mb-4">{siteContent.footer.siteTitleFooter}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <h3 className="font-display font-bold text-lg mb-4 text-footer-heading">{siteContent.footer.siteTitleFooter}</h3>
+              <p className="text-sm text-footer-body leading-relaxed">
                 {siteContent.footer.description}
               </p>
             </div>
             <div>
-              <h4 className="font-bold font-display mb-4">{siteContent.footer.pagesTitle}</h4>
-              <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <h4 className="font-bold font-display mb-4 text-footer-heading">{siteContent.footer.pagesTitle}</h4>
+              <div className="flex flex-col gap-2 text-sm text-footer-link">
                 <Link href="/about" className="hover:text-primary transition-colors" data-testid="link-footer-about">
                   {siteContent.footer.aboutLink}
                 </Link>
@@ -145,7 +145,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             <div>
-              <h4 className="font-bold font-display mb-4">{siteContent.footer.connectTitle}</h4>
+              <h4 className="font-bold font-display mb-4 text-footer-heading">{siteContent.footer.connectTitle}</h4>
               <div className="flex gap-3">
                 <a 
                   href={siteContent.contact.youtubeUrl}
@@ -198,7 +198,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
             </div>
           </div>
-          <div className="border-t border-border pt-8 text-center text-xs text-muted-foreground">
+          <div className="border-t border-border pt-8 text-center text-xs text-footer-body">
             &copy; {new Date().getFullYear()} {siteContent.footer.siteTitleFooter}. {siteContent.footer.copyrightText}
           </div>
         </div>

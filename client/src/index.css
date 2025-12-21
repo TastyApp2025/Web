@@ -137,8 +137,78 @@
   font-family: var(--font-serif);
 }
 
-/* All text at 100% brightness */
-p, span, li, a {
+/* Remove global text color - allow independent control per element */
+
+/* Semantic text color classes for independent control */
+.heading-main {
+  @apply text-foreground;
+}
+
+.heading-page {
+  @apply text-foreground;
+}
+
+.heading-section {
+  @apply text-foreground;
+}
+
+.heading-subsection {
+  @apply text-foreground;
+}
+
+.text-body {
+  @apply text-muted-foreground;
+}
+
+.text-secondary {
+  @apply text-muted-foreground;
+}
+
+.text-description {
+  @apply text-muted-foreground;
+}
+
+.text-label {
+  @apply text-foreground;
+}
+
+.text-link {
+  @apply text-muted-foreground;
+}
+
+.text-button {
+  color: inherit;
+}
+
+.text-hero {
+  @apply text-white;
+}
+
+.text-hero-accent {
+  @apply text-primary;
+}
+
+.text-card-title {
+  @apply text-foreground;
+}
+
+.text-feature-title {
+  @apply text-white;
+}
+
+.text-feature-desc {
+  @apply text-white/70;
+}
+
+.text-footer-heading {
+  @apply text-foreground;
+}
+
+.text-footer-body {
+  @apply text-muted-foreground;
+}
+
+.text-footer-link {
   @apply text-muted-foreground;
 }
 
@@ -150,4 +220,61 @@ p, span, li, a {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari, and Opera */
+}
+
+/* Card-specific text colors - decoupled from global colors */
+.card-container {
+  --card-title-color: 0 0% 20%; /* Dark grey/black for titles */
+  --card-location-color: 0 0% 60%; /* Medium grey for location */
+  --card-description-color: 0 0% 55%; /* Slightly lighter grey for description */
+}
+
+.card-title {
+  color: hsl(var(--card-title-color));
+}
+
+.card-location {
+  color: hsl(var(--card-location-color));
+}
+
+.card-description {
+  color: hsl(var(--card-description-color));
+}
+
+/* Section-specific text color overrides */
+.card-container[data-section-title="Addis"] {
+  --card-title-color: 0 0% 20%;
+  --card-location-color: 0 0% 60%;
+  --card-description-color: 0 0% 55%;
+}
+
+.card-container[data-section-title="Seven"] {
+  --card-title-color: 0 0% 20%;
+  --card-location-color: 0 0% 60%;
+  --card-description-color: 0 0% 55%;
+}
+
+.card-container[data-section-title="The"] {
+  --card-title-color: 0 0% 20%;
+  --card-location-color: 0 0% 60%;
+  --card-description-color: 0 0% 55%;
+}
+
+.card-container[data-section-title="Andalousse"] {
+  --card-title-color: 0 0% 20%;
+  --card-location-color: 0 0% 60%;
+  --card-description-color: 0 0% 55%;
+}
+
+/* Demo: No Hype (Idiot Sandwich) - Orange text */
+.card-container[data-section-title="The"] .card-title {
+  color: hsl(15 85% 55%); /* Orange - matching primary color */
+}
+
+.card-container[data-section-title="The"] .card-location {
+  color: hsl(15 85% 45%); /* Slightly darker orange */
+}
+
+.card-container[data-section-title="The"] .card-description {
+  color: hsl(15 85% 40%); /* Even darker orange for better readability */
 }
