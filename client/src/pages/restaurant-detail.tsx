@@ -254,17 +254,19 @@ export default function RestaurantDetail() {
           </div>
         </div>
 
-        {/* Review Section - Scrollable and Long Text Friendly */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 heading-section">Chef Wesley's Review</h2>
-          <Card className="bg-muted/20 border-2 border-border overflow-hidden">
-            <div className="max-h-[600px] overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
-              <p className="text-lg leading-relaxed whitespace-pre-wrap text-foreground">
-                {restaurant.review}
-              </p>
-            </div>
-          </Card>
-        </div>
+        {/* Review Section - Only show if review is written (not placeholder) */}
+        {restaurant.review && !restaurant.review.includes("[YOUR DETAILED REVIEW") && (
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold mb-6 heading-section">Chef Wesley's Review</h2>
+            <Card className="bg-muted/20 border-2 border-border overflow-hidden">
+              <div className="max-h-[600px] overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+                <p className="text-lg leading-relaxed whitespace-pre-wrap text-foreground">
+                  {restaurant.review}
+                </p>
+              </div>
+            </Card>
+          </div>
+        )}
 
         {/* Directions Button */}
         <Button className="w-full gap-2 h-12 text-base" asChild>
