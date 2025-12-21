@@ -267,6 +267,18 @@
 }
 
 /* Demo: No Hype (Idiot Sandwich) - Orange text */
+.card-title {
+  color: hsl(0 0% 20%); /* Dark grey for card titles */
+}
+
+.card-location {
+  color: hsl(0 0% 40%); /* Medium grey for location */
+}
+
+.card-description {
+  color: hsl(0 0% 35%); /* Medium-dark grey for description */
+}
+
 .card-container[data-section-title="The"] .card-title {
   color: hsl(15 85% 55%); /* Orange - matching primary color */
 }
