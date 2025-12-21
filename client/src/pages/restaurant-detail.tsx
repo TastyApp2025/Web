@@ -3,8 +3,9 @@ import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { usePageMeta } from "@/hooks/use-page-meta";
-import { MapPin, Phone, Globe, Clock, DollarSign, Navigation, ChevronLeft, Star } from "lucide-react";
+import { MapPin, Phone, Globe, Clock, DollarSign, Navigation, ChevronLeft, Star, Share2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 interface Restaurant {
   id: string;
@@ -29,6 +30,29 @@ export default function RestaurantDetail() {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
+
+  const handleShare = async () => {
+    const shareData = {
+      title: `${restaurant?.name} - ForYourInfluence Review`,
+      text: `Check out Wesley's review of ${restaurant?.name} on ForYourInfluence!`,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        toast({
+          title: "Link Copied!",
+          description: "The review link has been copied to your clipboard.",
+        });
+      }
+    } catch (err) {
+      console.error("Error sharing:", err);
+    }
+  };
 
   useEffect(() => {
     // Fetch restaurant data
@@ -95,7 +119,7 @@ export default function RestaurantDetail() {
   }
 
   // Build structured data safely
-  const structuredData: any = {
+  const structuredData = {
     "@context": "https://schema.org/",
     "@type": "Restaurant",
     name: restaurant.name,
@@ -105,29 +129,22 @@ export default function RestaurantDetail() {
       "@type": "PostalAddress",
       streetAddress: restaurant.address || restaurant.location,
     },
+    ...(restaurant.phone && { telephone: restaurant.phone }),
+    ...(restaurant.website && { url: restaurant.website }),
+    ...(restaurant.rating && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: restaurant.rating.toString(),
+        reviewCount: "1",
+      },
+    }),
   };
-
-  if (restaurant.phone) {
-    structuredData.telephone = restaurant.phone;
-  }
-
-  if (restaurant.website) {
-    structuredData.url = restaurant.website;
-  }
-
-  if (restaurant.rating) {
-    structuredData.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: restaurant.rating.toString(),
-      reviewCount: "1",
-    };
-  }
 
   usePageMeta({
     title: `${restaurant.name} - Restaurant Review | ForYourInfluence`,
-    description: `${restaurant.name} - ${restaurant.type} restaurant in ${restaurant.location}. Read an honest, independent review from professional chef Wesley.`,
+    description: `Read Chef Wesley's review of ${restaurant.name}, a ${restaurant.type} restaurant in ${restaurant.location}. Honest, self-funded food reviews.`,
     url: `https://www.foryourinfluence.co.za/restaurant/${id}`,
-    keywords: `${restaurant.name}, restaurant review, ${restaurant.type}, Cape Town`,
+    keywords: `${restaurant.name} review, ${restaurant.name} ${restaurant.location}, ${restaurant.type} restaurant ${restaurant.location}, Cape Town food reviews`,
     structuredData,
   });
 
@@ -141,20 +158,29 @@ export default function RestaurantDetail() {
   return (
     <Layout>
       <div className="bg-primary/5 py-6 mb-12">
-        <div className="container mx-auto px-4">
-          <Link href="/favourites" className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 mb-6">
+        <div className="container mx-auto px-4 flex items-center justify-between">
+          <Link href="/favourites" className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80">
             <ChevronLeft size={16} />
             Back to Restaurants
           </Link>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="gap-2 text-primary hover:text-primary hover:bg-primary/10"
+            onClick={handleShare}
+          >
+            <Share2 size={16} />
+            Share Review
+          </Button>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 pb-16 max-w-3xl">
+      <div className="container mx-auto px-4 pb-16 max-w-4xl">
         {/* Restaurant Image */}
         <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
           <img
             src={restaurant.image}
-            alt={restaurant.altText || restaurant.name}
+            alt={`${restaurant.name} - ${restaurant.type} restaurant in ${restaurant.location}`}
             className="w-full h-96 object-cover"
           />
         </div>
@@ -168,97 +194,88 @@ export default function RestaurantDetail() {
           <h1 className="text-4xl md:text-5xl font-bold mb-3">{restaurant.name}</h1>
 
           <div className="flex items-center gap-4 mb-4">
-            <div className="flex items-center gap-2">
-              <Star size={20} className="fill-amber-500 text-amber-500" />
-              <span className="text-2xl font-bold">{restaurant.rating?.toFixed(1)}</span>
-            </div>
+            {restaurant.rating && (
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={20}
+                    className={i < Math.floor(restaurant.rating || 0) ? "fill-amber-500 text-amber-500" : "text-muted-foreground"}
+                  />
+                ))}
+                <span className="ml-2 text-xl font-bold">{restaurant.rating.toFixed(1)}</span>
+              </div>
+            )}
             <p className="text-lg text-muted-foreground">{restaurant.location}</p>
           </div>
 
           <p className="text-lg text-foreground leading-relaxed">{restaurant.description}</p>
         </div>
 
-        {/* Info Cards */}
-        <div className="grid md:grid-cols-2 gap-4 mb-12">
-          {restaurant.address && (
-            <Card className="p-6 border-2 border-border bg-muted/30">
-              <div className="flex gap-3">
-                <MapPin size={24} className="text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-sm uppercase text-muted-foreground mb-1">Address</h3>
-                  <p className="font-semibold text-foreground">{restaurant.address}</p>
-                </div>
-              </div>
-            </Card>
-          )}
+        {/* Info Cards - Quick Details */}
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-4 sr-only">Restaurant Information</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            {restaurant.address && (
+              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+                <MapPin size={24} className="text-primary mb-2 flex-shrink-0" />
+                <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Address</h3>
+                <p className="text-xs font-semibold line-clamp-2">{restaurant.address}</p>
+              </Card>
+            )}
 
-          {restaurant.phone && (
-            <Card className="p-6 border-2 border-border bg-muted/30">
-              <div className="flex gap-3">
-                <Phone size={24} className="text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-sm uppercase text-muted-foreground mb-1">Phone</h3>
-                  <a href={`tel:${restaurant.phone}`} className="font-semibold text-primary hover:underline">
-                    {restaurant.phone}
-                  </a>
-                </div>
-              </div>
-            </Card>
-          )}
+            {restaurant.phone && (
+              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+                <Phone size={24} className="text-primary mb-2 flex-shrink-0" />
+                <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Phone</h3>
+                <a href={`tel:${restaurant.phone}`} className="text-xs font-semibold text-primary hover:underline truncate w-full">
+                  {restaurant.phone}
+                </a>
+              </Card>
+            )}
 
-          {restaurant.hours && (
-            <Card className="p-6 border-2 border-border bg-muted/30">
-              <div className="flex gap-3">
-                <Clock size={24} className="text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-sm uppercase text-muted-foreground mb-1">Hours</h3>
-                  <p className="font-semibold text-foreground">{restaurant.hours}</p>
-                </div>
-              </div>
-            </Card>
-          )}
+            {restaurant.hours && (
+              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+                <Clock size={24} className="text-primary mb-2 flex-shrink-0" />
+                <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Hours</h3>
+                <p className="text-xs font-semibold line-clamp-2">{restaurant.hours}</p>
+              </Card>
+            )}
 
-          {restaurant.priceRange && (
-            <Card className="p-6 border-2 border-border bg-muted/30">
-              <div className="flex gap-3">
-                <DollarSign size={24} className="text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-sm uppercase text-muted-foreground mb-1">Price Range</h3>
-                  <p className="font-semibold text-foreground">
-                    {priceRangeDisplay[restaurant.priceRange] || restaurant.priceRange}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          )}
+            {restaurant.priceRange && (
+              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+                <DollarSign size={24} className="text-primary mb-2 flex-shrink-0" />
+                <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Price</h3>
+                <p className="text-xs font-semibold">{priceRangeDisplay[restaurant.priceRange] || restaurant.priceRange}</p>
+              </Card>
+            )}
 
-          {restaurant.website && (
-            <Card className="p-6 border-2 border-border bg-muted/30">
-              <div className="flex gap-3">
-                <Globe size={24} className="text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-bold text-sm uppercase text-muted-foreground mb-1">Website</h3>
-                  <a
-                    href={restaurant.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-primary hover:underline break-all"
-                  >
-                    Visit Website
-                  </a>
-                </div>
-              </div>
-            </Card>
-          )}
+            {restaurant.website && (
+              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+                <Globe size={24} className="text-primary mb-2 flex-shrink-0" />
+                <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Website</h3>
+                <a
+                  href={restaurant.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-primary hover:underline"
+                >
+                  Visit
+                </a>
+              </Card>
+            )}
+          </div>
         </div>
 
-        {/* Review Section */}
+        {/* Review Section - Scrollable and Long Text Friendly */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6 heading-section">My Review</h2>
-          <Card className="p-8 bg-muted/20 border-2 border-border">
-            <p className="text-lg leading-relaxed whitespace-pre-wrap text-foreground">
-              {restaurant.review}
-            </p>
+          <h2 className="text-3xl font-bold mb-6 heading-section">Chef Wesley's Review</h2>
+          <Card className="bg-muted/20 border-2 border-border overflow-hidden">
+            <div className="max-h-[600px] overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+              <p className="text-lg leading-relaxed whitespace-pre-wrap text-foreground">
+                {restaurant.review}
+              </p>
+            </div>
           </Card>
         </div>
 

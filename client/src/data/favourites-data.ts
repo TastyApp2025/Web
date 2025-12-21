@@ -34,7 +34,7 @@ export const FAVOURITES: Place[] = [
     id: "seven-colours-1",
     name: "Seven Colours Eatery",
     location: "Cape Town",
-    type: "South African",
+    type: "Eatery",
     description: "Vibrant South African cuisine celebrating local flavors and traditions. From braised meats to fresh vegetables, every dish tells a story of South Africa's diverse culinary heritage.",
     image: "/attached_assets/generated_images/south_african_dining_atmosphere.png",
     mapLink: "https://maps.app.goo.gl/EgB7RMdC89zJsj8e8"

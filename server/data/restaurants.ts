@@ -41,7 +41,7 @@ export const restaurants: Restaurant[] = [
     id: "seven-colours-1",
     name: "Seven Colours Eatery",
     location: "Cape Town, South Africa",
-    type: "Café",
+    type: "Eatery",
     description: "Vibrant eatery offering contemporary cuisine in a colorful, welcoming atmosphere.",
     image: "https://lh3.googleusercontent.com/p/AF1QipNwEi0s1xhp2BhRqVUllhgual7IkshSMcz6f-2m=s680-w680-h510-rw",
     mapLink: "https://maps.google.com/maps?q=Seven+Colours+Eatery+Cape+Town",
