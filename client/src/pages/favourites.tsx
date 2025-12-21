@@ -313,11 +313,11 @@ export default function Favourites() {
                           <h3 className="font-display font-bold text-lg mb-2 line-clamp-2">
                             {place.name}
                           </h3>
-                          <div className="flex items-center text-muted-foreground text-xs mb-3">
+                          <div className="flex items-center text-foreground text-xs mb-3">
                             <MapPin size={14} className="mr-1.5 flex-shrink-0" />
                             <span className="line-clamp-1">{place.location}</span>
                           </div>
-                          <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed mb-3">
+                          <p className="text-sm text-foreground line-clamp-3 leading-relaxed mb-3">
                             {place.description}
                           </p>
                           {place.rating && (
