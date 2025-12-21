@@ -96,6 +96,13 @@ export default function Favourites() {
         const validRestaurants = data.filter(
           (place: any) => !place.error && place.name
         );
+        
+        // Log any errors for debugging
+        const errors = data.filter((place: any) => place.error);
+        if (errors.length > 0) {
+          console.error("API errors from batch request:", errors);
+        }
+        
         setRestaurants(validRestaurants);
       } catch (err) {
         console.error("Error fetching restaurants:", err);

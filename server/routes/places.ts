@@ -43,8 +43,16 @@ router.post("/api/places/batch", async (req: Request, res: Response) => {
       if (result.status === "fulfilled" && result.value) {
         return result.value;
       }
+      
+      let errorMessage = `Failed to fetch place for query: ${queries[index]}`;
+      if (result.status === "rejected") {
+        console.error(`Query "${queries[index]}" failed:`, result.reason);
+        errorMessage = result.reason instanceof Error ? result.reason.message : String(result.reason);
+      }
+      
       return {
-        error: `Failed to fetch place for query: ${queries[index]}`,
+        error: errorMessage,
+        query: queries[index],
       };
     });
 
