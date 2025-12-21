@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="theme-color" content="#fffbf6" />
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Independent South African food reviews from a professional chef. Real experiences. Self-funded meals. No sponsorships." />
+    <meta name="keywords" content="food reviews, South African restaurants, chef reviews, takeaway reviews, food channel, honest restaurant reviews, South Africa food, Cape Town dining" />
+    <meta name="author" content="Wesley" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="ForYourInfluence - Real Food, No Hype" />
+    <meta property="og:description" content="Chef-led restaurant and takeaway reviews. Independent. Honest. Unsponsored." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://www.foryourinfluence.co.za" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ForYourInfluence - Chef-Led SA Food Reviews" />
+    <meta name="twitter:description" content="Real food experiences from a professional chef." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+    <meta name="twitter:creator" content="@foryourinfluence" />
+
+    <!-- Favicon - configured dynamically from site-content.ts -->
+    <link rel="icon" type="image/png" href="/favicon.png" id="favicon-link" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" id="apple-touch-icon-link" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <title>ForYourInfluence | Real Food, No Hype</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.foryourinfluence.co.za/" />
+
+    <!-- JSON-LD Structured Data - WebSite (for sitelinks search box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ForYourInfluence",
+      "url": "https://www.foryourinfluence.co.za",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.foryourinfluence.co.za/search?q={search_term_string}"
+        }
+      },
+      "description": "Independent South African food reviews from a professional chef"
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ForYourInfluence",
+      "url": "https://www.foryourinfluence.co.za",
+      "logo": "https://www.foryourinfluence.co.za/favicon.png",
+      "description": "Independent South African food reviews. Chef-led. Self-funded. No sponsored content.",
+      "foundingDate": "2023",
+      "areaServed": "ZA",
+      "sameAs": [
+        "https://www.youtube.com/@ForYourInfluence",
+        "https://www.instagram.com/4yourinfluence",
+        "https://www.tiktok.com/@foryourinfluence"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Wesley",
+        "url": "https://www.foryourinfluence.co.za/about",
+        "jobTitle": "Professional Chef"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Media Inquiries",
+        "email": "foryourinfluence2010@gmail.com",
+        "url": "https://www.foryourinfluence.co.za/contact"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - Person (Chef Wesley) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Wesley",
+      "url": "https://www.foryourinfluence.co.za/about",
+      "image": "https://www.foryourinfluence.co.za/favicon.png",
+      "jobTitle": "Professional Chef",
+      "description": "Professional chef providing honest, independent food reviews in South Africa. Self-funded meals. No sponsored content.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "ForYourInfluence",
+        "url": "https://www.foryourinfluence.co.za"
+      },
+      "sameAs": [
+        "https://www.youtube.com/@ForYourInfluence",
+        "https://www.instagram.com/4yourinfluence",
+        "https://www.tiktok.com/@foryourinfluence"
+      ],
+      "knowsAbout": ["Food Reviews", "Restaurant Reviews", "Cooking", "South African Cuisine"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Media Inquiries",
+        "email": "foryourinfluence2010@gmail.com"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ForYourInfluence - Food Reviews",
+      "description": "Independent restaurant and takeaway reviews from a professional chef in South Africa",
+      "url": "https://www.foryourinfluence.co.za",
+      "areaServed": {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      "priceRange": "$",
+      "sameAs": [
+        "https://www.youtube.com/@ForYourInfluence",
+        "https://www.instagram.com/4yourinfluence",
+        "https://www.tiktok.com/@foryourinfluence"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('Service Worker registered');
+            })
+            .catch(err => {
+              console.log('Service Worker registration failed');
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

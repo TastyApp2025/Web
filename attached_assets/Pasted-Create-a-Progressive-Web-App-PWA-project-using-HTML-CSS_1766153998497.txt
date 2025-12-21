@@ -1,0 +1,209 @@
+Create a Progressive Web App (PWA) project using HTML, CSS, and JavaScript. The app should:
+
+1. Include a home page (index.html) with a responsive layout.
+2. Include a manifest.json file for PWA installability with:
+   - name: "My PWA"
+   - short_name: "PWA"
+   - start_url: "/"
+   - display: "standalone"
+   - background_color: "#ffffff"
+   - theme_color: "#000000"
+   - icons for 192x192 and 512x512
+3. Include a service worker (sw.js) that caches all site files for offline use.
+4. Include a header with a title and navigation menu.
+5. Include a main content area with:
+   - A section for articles or videos
+   - Two placeholder sections for ads labeled "Ad Space 1" and "Ad Space 2"
+6. Include a footer with copyright info.
+7. Use CSS to make the layout mobile-friendly and visually clean.
+8. Include comments in HTML where the ad code from brands can be inserted.
+9. Ensure the project can be hosted on GitHub Pages without changes.
+10. Include a README.md file explaining:
+    - How to run the project locally
+    - How to deploy to GitHub Pages
+    - How to replace the ad placeholders with real ad code
+
+Make the code clean, well-structured, and easy to customize. Compatabile. Do not hardcode or leave replit dependent code. Make sure this will be seo optimized.
+---------------------------------------------------------------------------------------------------------------
+Create a clean, modern, mobile-first website for a South African food experience brand called ForYourInfluence.
+
+This is NOT a photography, lifestyle, or influencer portfolio.
+This is a chef-led food experience website.
+
+The site must clearly communicate credibility, independence, and usefulness.
+
+CORE IDENTITY (MUST BE CLEAR ABOVE THE FOLD)
+
+Run by a professional chef
+
+All food experiences are independent
+
+Food is paid for personally
+
+No free meals
+
+No sponsored hype
+
+No ratings or scores
+
+Restaurants and takeaways are reviewed in context
+
+Includes an AI-powered recipe generator web app
+
+DESIGN RULES (Compatabible, no replit dependent code)
+
+Use food-focused imagery only
+(plates, street food, restaurants, kitchens, dining scenes) All replaceable
+
+Do NOT use cameras, weddings, musicians, portraits, or lifestyle stock
+
+Neutral colours, fresh green food and tomato red colours
+
+Clean, readable typography
+
+Simple stacked sections (no complex layouts)
+
+Mobile-first,tablet and desktop compatabile
+
+Clear CTA buttons 
+
+SEO GUIDELINES
+
+Use clear H1 and H2 headings
+
+Natural keyword usage only:
+
+South African food reviews
+
+Chef led food experiences
+
+Restaurant and takeaway reviews
+
+Avoid keyword stuffing
+
+Page titles must clearly describe food + chef authority
+
+PAGES & CONTENT
+HOME PAGE
+
+H1 (Main headline):
+Honest South African Food Experiences ( Thick rounded text style)
+
+Sub-headline:
+No ratings. No free meals. Real food experiences from a professional chef.
+
+Intro paragraph:
+ForYourInfluence is a South African food experience platform run by a professional chef. I visit restaurants and takeaways independently, pay for my own food, and share honest insights into the full dining experience. Alongside this, I offer an AI powered recipe generator app to help people cook smarter at home.
+
+TRUST SECTION
+
+(Simple icons or bullet points)
+
+Professional chef-led
+
+Independent visits
+
+Food paid for personally
+
+No sponsored content
+
+AI RECIPE GENERATOR SECTION (WEB APP LINK)
+
+Section title:
+AI Recipe Generator
+
+Text:
+The ForYourInfluence AI recipe generator helps you create meals based on the ingredients you have, your budget, and your preferences. It’s designed to be practical, accessible, and grounded in real food knowledge from a professional chef.
+
+Button:
+Try the AI Recipe Generator
+(Editable link to your web app)
+
+This section must appear before the video section.
+
+LATEST YOUTUBE VIDEOS SECTION (VERY IMPORTANT)
+
+Section title:
+Latest Food Reviews on YouTube
+
+Intro text:
+Recent restaurant and takeaway visits across South Africa, shared through honest, experience-based videos.
+
+Layout requirement:
+
+Display YouTube videos in a vertical stacked row scrollable and should automatically update to keep site up to date with new videos, at least 5 recent videos everytime.
+
+Each video shows:
+
+Thumbnail
+
+Title
+
+Play or link button
+
+Videos must be clearly visible without clicking away
+
+Button below videos:
+View Full YouTube Channel
+
+This section must feel intentional and integrated, not embedded randomly.
+
+ABOUT PAGE
+
+SEO Title:
+About ForYourInfluence | Chef Led South African Food Experiences
+
+Content:
+ForYourInfluence was created to offer a more honest and realistic way of talking about food.
+
+As a professional chef, I understand food from the kitchen side, but this platform focuses on the real experience of eating out. I consider the atmosphere, service, food, taste, and value.
+
+Restaurants and takeaways are reviewed differently, based on what they aim to deliver. All visits are independent, food is paid for personally, and no paid promotions are accepted to review restaurants.
+
+SEO Title:
+My favourite spots
+
+Favourites PAGE
+Favourites is cards of the places i have been to that i like so i link them with their google maps location and it fills the card with their restaurant image on google maps, can this be done? Vertical scrollable and when clicked opens users google maps or any map/location things and shows them where this is. 
+
+
+CONTACT PAGE
+
+SEO Title:
+Contact ForYourInfluence | South African Food Platform
+
+Content:
+For media enquiries, collaborations, or general questions, you can contact me via the submit form. Form will be sent to the email that i link to it. 
+
+Include clear buttons or icons linking to:
+
+YouTube
+
+Instagram
+
+TikTok
+
+
+FOOTER
+
+Footer text:
+ForYourInfluence is an independent South African food experience platform.
+Chef-led. Unsponsored. No ratings. No free meals.
+
+Include links to:
+
+App
+
+YouTube
+
+Instagram
+
+TikTok
+
+FINAL AI INSTRUCTION
+
+Avoid generic influencer or portfolio layouts.
+Avoid photography-style visuals.
+Every section must reinforce food credibility, independence, and usefulness.
+
+
