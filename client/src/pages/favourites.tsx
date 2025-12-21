@@ -92,9 +92,6 @@ export default function Favourites() {
     fetchRestaurants();
   }, []);
 
-    fetchRestaurants();
-  }, []);
-
   return (
     <Layout>
       <div className="bg-primary/5 py-12">
