@@ -33,21 +33,13 @@ export default function RestaurantDetail() {
     // Fetch restaurant data
     const fetchRestaurant = async () => {
       try {
-        const response = await fetch("/api/places/batch", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ queries: [""] }),
-        });
+        const response = await fetch(`/api/restaurants/${id}`);
 
         if (response.ok) {
           const data = await response.json();
-          // Find the restaurant by ID from the fetched data
-          const found = data.find((r: Restaurant) => r.id === id);
-          if (found) {
-            setRestaurant(found);
-          }
+          setRestaurant(data);
+        } else {
+          console.error("Restaurant not found");
         }
       } catch (error) {
         console.error("Error fetching restaurant:", error);

@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import placesRouter from "./routes/places";
 import { registerContactRoutes } from "./routes/contact";
 import { registerSitemapRoute } from "./routes/sitemap";
+import { registerRestaurantRoutes } from "./routes/restaurants";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -23,6 +24,9 @@ export async function registerRoutes(
 
   // Sitemap & Robots routes
   registerSitemapRoute(app);
+
+  // Restaurant data routes
+  registerRestaurantRoutes(app);
 
   return httpServer;
 }
