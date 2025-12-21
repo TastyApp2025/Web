@@ -35,6 +35,7 @@ export default function Favourites() {
   const [restaurants, setRestaurants] = useState<PlaceDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [apiErrors, setApiErrors] = useState<Array<{error: string; query: string}>>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
@@ -97,10 +98,17 @@ export default function Favourites() {
           (place: any) => !place.error && place.name
         );
         
-        // Log any errors for debugging
+        // Capture any errors for display
         const errors = data.filter((place: any) => place.error);
         if (errors.length > 0) {
           console.error("API errors from batch request:", errors);
+          setApiErrors(errors);
+          
+          // If no valid restaurants, set error message showing what failed
+          if (validRestaurants.length === 0) {
+            const errorMessages = errors.map((e: any) => e.error).join("; ");
+            setError(`Unable to load restaurants: ${errorMessages}`);
+          }
         }
         
         setRestaurants(validRestaurants);
@@ -156,16 +164,30 @@ export default function Favourites() {
         </div>
       ) : error ? (
         <div className="container mx-auto px-4 py-20">
-          <div className="text-center max-w-md mx-auto">
+          <div className="text-center max-w-2xl mx-auto">
             <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
               <MapPin size={32} className="text-red-600" />
             </div>
             <h2 className="font-display font-bold text-2xl mb-2">
               Unable to Load Restaurants
             </h2>
-            <p className="text-muted-foreground text-sm">{error}</p>
-            <p className="text-muted-foreground text-xs mt-4">
-              Make sure the GOOGLE_MAPS_API_KEY environment variable is set
+            <p className="text-muted-foreground text-sm mb-6">{error}</p>
+            
+            {apiErrors.length > 0 && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-left">
+                <p className="text-sm font-semibold text-red-800 mb-3">API Errors:</p>
+                <ul className="space-y-2">
+                  {apiErrors.map((err, idx) => (
+                    <li key={idx} className="text-xs text-red-700">
+                      <strong>{err.query}:</strong> {err.error}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            <p className="text-muted-foreground text-xs mt-6">
+              Common issues: Places API not enabled, billing not set up, or API key restrictions
             </p>
           </div>
         </div>
