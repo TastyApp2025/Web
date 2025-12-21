@@ -17,7 +17,7 @@ export function useSearch<T>(items: T[], searchTerm: string, searchFields: (keyo
         return false;
       });
     });
-  }, [items, searchTerm, searchFields]);
+  }, [items, searchTerm, JSON.stringify(searchFields)]);
 }
 
 export function useFilter<T>(
