@@ -1,5 +1,5 @@
 export interface Place {
-  id: number;
+  id: string;
   name: string;
   location: string;
   type: string;
@@ -22,7 +22,7 @@ export interface Place {
 
 export const FAVOURITES: Place[] = [
   {
-    id: 1,
+    id: "addis-cape-1",
     name: "Addis in Cape Ethiopian Restaurant",
     location: "Cape Town",
     type: "Ethiopian",
@@ -31,7 +31,7 @@ export const FAVOURITES: Place[] = [
     mapLink: "https://maps.app.goo.gl/M1gK7TLhXLz2DNaa8"
   },
   {
-    id: 2,
+    id: "seven-colours-1",
     name: "Seven Colours Eatery",
     location: "Cape Town",
     type: "South African",
@@ -40,7 +40,7 @@ export const FAVOURITES: Place[] = [
     mapLink: "https://maps.app.goo.gl/EgB7RMdC89zJsj8e8"
   },
   {
-    id: 3,
+    id: "idiot-sandwich-1",
     name: "The Idiot Sandwich Café",
     location: "Cape Town",
     type: "Café",
@@ -49,7 +49,7 @@ export const FAVOURITES: Place[] = [
     mapLink: "https://maps.app.goo.gl/s2m9zvfKRBiVvgDX9"
   },
   {
-    id: 4,
+    id: "andalousse-1",
     name: "Andalousse Moroccan Restaurant",
     location: "Cape Town",
     type: "Moroccan",
