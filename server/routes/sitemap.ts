@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import { restaurants } from "../data/restaurants";
 
 export function registerSitemapRoute(app: Express): void {
   app.get("/sitemap.xml", (req, res) => {
@@ -8,16 +9,25 @@ export function registerSitemapRoute(app: Express): void {
     const siteUrl = process.env.SITE_URL || `${protocol}://${host}`;
     const lastModified = new Date().toISOString().split("T")[0];
 
-    const routes = [
+    const mainRoutes = [
       { path: "/", priority: "1.0", changefreq: "weekly" },
       { path: "/about", priority: "0.8", changefreq: "monthly" },
       { path: "/favourites", priority: "0.8", changefreq: "weekly" },
       { path: "/contact", priority: "0.7", changefreq: "monthly" },
     ];
 
+    // Add individual restaurant pages to sitemap
+    const restaurantRoutes = restaurants.map((restaurant) => ({
+      path: `/restaurant/${restaurant.id}`,
+      priority: "0.9",
+      changefreq: "monthly",
+    }));
+
+    const allRoutes = [...mainRoutes, ...restaurantRoutes];
+
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes
+${allRoutes
   .map(
     (route) => `
   <url>
