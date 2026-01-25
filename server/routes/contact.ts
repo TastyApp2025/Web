@@ -46,13 +46,13 @@ export function registerContactRoutes(app: Express): void {
           <div style="font-family: Arial, sans-serif; color: #333;">
             <h2 style="color: #1f2937;">New Contact Form Submission</h2>
             <div style="background-color: #f3f4f6; padding: 16px; border-radius: 8px; margin: 16px 0;">
-              <p><strong>Name:</strong> ${validData.name}</p>
-              <p><strong>Email:</strong> <a href="mailto:${validData.email}">${validData.email}</a></p>
-              <p><strong>Subject:</strong> ${validData.subject}</p>
+              <p><strong>Name:</strong> \${validData.name}</p>
+              <p><strong>Email:</strong> <a href="mailto:\${validData.email}">\${validData.email}</a></p>
+              <p><strong>Subject:</strong> \${validData.subject}</p>
             </div>
             <div style="margin: 16px 0;">
               <h3 style="color: #1f2937; margin-bottom: 8px;">Message:</h3>
-              <p style="white-space: pre-wrap; background-color: #f9fafb; padding: 12px; border-left: 4px solid #3b82f6;">${validData.message}</p>
+              <p style="white-space: pre-wrap; background-color: #f9fafb; padding: 12px; border-left: 4px solid #3b82f6;">\${validData.message}</p>
             </div>
             <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;">
             <p style="color: #6b7280; font-size: 12px;">This is an automated message from ForYourInfluence contact form.</p>
@@ -69,12 +69,12 @@ export function registerContactRoutes(app: Express): void {
         html: `
           <div style="font-family: Arial, sans-serif; color: #333;">
             <h2 style="color: #1f2937;">Thank you for reaching out!</h2>
-            <p>Hi ${validData.name},</p>
+            <p>Hi \${validData.name},</p>
             <p>We received your message and will get back to you as soon as possible.</p>
             <div style="background-color: #f3f4f6; padding: 16px; border-radius: 8px; margin: 16px 0;">
-              <p><strong>Your Subject:</strong> ${validData.subject}</p>
+              <p><strong>Your Subject:</strong> \${validData.subject}</p>
               <p><strong>Your Message:</strong></p>
-              <p style="white-space: pre-wrap; margin: 8px 0;">${validData.message}</p>
+              <p style="white-space: pre-wrap; margin: 8px 0;">\${validData.message}</p>
             </div>
             <p>Best regards,<br>ForYourInfluence Team</p>
             <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 24px 0;">
@@ -83,20 +83,23 @@ export function registerContactRoutes(app: Express): void {
         `,
       };
 
-      try {
-        // Send both emails
-        console.log("Attempting to send emails...");
-        await Promise.all([
-          transporter.sendMail(adminMailOptions),
-          transporter.sendMail(userMailOptions),
-        ]);
-        console.log("✓ Contact form emails sent successfully:", validData.email);
-      } catch (emailError) {
-        console.error("✗ Email sending error:", emailError instanceof Error ? emailError.message : emailError);
-        console.error("Full error details:", emailError);
-        // Still return success to user even if email fails
-        // (graceful degradation - message is logged on server)
-      }
+      // Send emails asynchronously without blocking the response
+      const sendEmails = async () => {
+        try {
+          console.log("Attempting to send emails...");
+          await Promise.all([
+            transporter.sendMail(adminMailOptions),
+            transporter.sendMail(userMailOptions),
+          ]);
+          console.log("✓ Contact form emails sent successfully:", validData.email);
+        } catch (emailError) {
+          console.error("✗ Email sending error:", emailError instanceof Error ? emailError.message : emailError);
+          console.error("Full error details:", emailError);
+        }
+      };
+
+      // Fire and forget - don't await
+      sendEmails();
 
       res.json({
         success: true,

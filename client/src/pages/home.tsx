@@ -8,7 +8,7 @@ import { useYouTubeVideos, getYouTubeWatchUrl, formatPublishDate, getYouTubeChan
 import { usePageMeta } from "@/hooks/use-page-meta";
 import { siteContent } from "@/data/site-content";
 import { VideoDetailsModal } from "@/components/video-details-modal";
-import { generateVideoCollectionSchema, generatePersonSchema } from "@/lib/schema-helpers";
+import { generateVideoCollectionSchema, generatePersonSchema, generateOrganizationSchema, generateYouTubeChannelSchema } from "@/lib/schema-helpers";
 import heroImage from "@assets/generated_images/professional_chef_plating_south_african_food.png";
 import atmosphereImage from "@assets/generated_images/south_african_dining_atmosphere.png";
 
@@ -24,10 +24,12 @@ export default function Home() {
     ? generateVideoCollectionSchema(videos, siteContent.home.youtubeSection, getYouTubeChannelUrl(YOUTUBE_CHANNEL_ID))
     : undefined;
 
-  // Combine person schema with videos schema
+  // Combine all schemas for comprehensive SEO
   const combinedSchema = {
     "@context": "https://schema.org",
     "@graph": [
+      generateOrganizationSchema(),
+      generateYouTubeChannelSchema(),
       generatePersonSchema(),
       ...(videoSchema ? [videoSchema] : []),
     ],
@@ -37,7 +39,7 @@ export default function Home() {
     title: siteContent.home.metaTitle,
     description: siteContent.home.metaDescription,
     url: "https://www.foryourinfluence.co.za/",
-    keywords: "chef reviews, South Africa food, restaurant reviews, takeaway reviews, independent reviews, food channel, YouTube chef",
+    keywords: "chef reviews, food reviews, restaurant reviews, takeaway reviews, independent reviews, food channel, YouTube chef, African food, international food reviewer, honest food reviews, street food, fine dining reviews",
     structuredData: combinedSchema,
   });
 

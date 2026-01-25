@@ -3,25 +3,25 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
   <url>
-    <loc>https://foryourinfluence.com/</loc>
+    <loc>https://www.foryourinfluence.co.za/</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://foryourinfluence.com/about</loc>
+    <loc>https://www.foryourinfluence.co.za/about</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://foryourinfluence.com/favourites</loc>
+    <loc>https://www.foryourinfluence.co.za/favourites</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://foryourinfluence.com/contact</loc>
+    <loc>https://www.foryourinfluence.co.za/contact</loc>
     <lastmod>2024-12-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

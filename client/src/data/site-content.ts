@@ -18,8 +18,8 @@ export const siteContent = {
     heroTitle1: "Real Food",
     heroTitle2: "No Hype",
     heroSubtitle: "ForYourInfluence is a South African food experience platform run by a professional chef Wesley. I visit restaurants and takeaways independently, pay for my own food, and share honest insights into the full dining. Alongside this, I offer an AI-powered recipe generator \"Tastey\" to help people cook smarter at home.",
-    metaTitle: "ForYourInfluence | Independent Food Reviews from a South African Chef",
-    metaDescription: "Honest, independent restaurant and takeaway reviews from professional chef Wesley. Self-funded. No sponsorships. Real experiences.",
+    metaTitle: "ForYourInfluence | Independent Food Reviews from Chef Wesley",
+    metaDescription: "Honest, independent restaurant and takeaway reviews from professional chef Wesley. Self-funded. No sponsorships. Real food experiences for viewers worldwide.",
     watchButton: "Watch Latest Reviews",
     favouritesButton: "My Favourites",
     whyDifferent: "Why I'm Different",
@@ -85,6 +85,8 @@ export const siteContent = {
     instagramUrl: "https://www.instagram.com/4yourinfluence",
     tiktok: "TikTok",
     tiktokUrl: "https://www.tiktok.com/@foryourinfluence",
+    twitter: "X",
+    twitterUrl: "https://x.com/4YourYourlnfluence",
     nameLabel: "Name",
     namePlaceholder: "Your name",
     emailLabel: "Email",
@@ -103,7 +105,7 @@ export const siteContent = {
   // Footer
   footer: {
     siteTitleFooter: "ForYourInfluence",
-    description: "Independent South African food reviews. Chef-led. Self-funded. No sponsored content.",
+    description: "Independent food reviews from Africa. Chef-led. Self-funded. No sponsored content. For food lovers worldwide.",
     pagesTitle: "Pages",
     aboutLink: "About Chef",
     favouritesLink: "Favourites",
