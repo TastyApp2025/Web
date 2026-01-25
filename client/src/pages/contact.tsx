@@ -31,7 +31,7 @@ export default function Contact() {
         "email": siteContent.contact.contactFormEmail,
         "url": "https://www.foryourinfluence.co.za/contact",
         "contactOption": ["TelephoneOption", "EmailAddress"],
-        "areaServed": "ZA",
+        "areaServed": [{"@type":"Continent","name":"Africa"},{"@type":"Country","name":"United Kingdom"},{"@type":"Country","name":"United States"},{"@type":"Country","name":"Canada"},{"@type":"Country","name":"Australia"}],
       },
       {
         "@type": "FAQPage",
