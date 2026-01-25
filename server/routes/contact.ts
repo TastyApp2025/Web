@@ -26,6 +26,9 @@ export function registerContactRoutes(app: Express): void {
       const validData = ContactFormSchema.parse(req.body);
 
       // Send email via Gmail SMTP
+      console.log("Gmail config - User:", process.env.GMAIL_USER || "foryourinfluence2010@gmail.com");
+      console.log("Gmail config - Password set:", !!process.env.GMAIL_PASSWORD);
+      
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -82,13 +85,15 @@ export function registerContactRoutes(app: Express): void {
 
       try {
         // Send both emails
+        console.log("Attempting to send emails...");
         await Promise.all([
           transporter.sendMail(adminMailOptions),
           transporter.sendMail(userMailOptions),
         ]);
-        console.log("Contact form emails sent:", validData);
+        console.log("✓ Contact form emails sent successfully:", validData.email);
       } catch (emailError) {
-        console.error("Email sending error:", emailError);
+        console.error("✗ Email sending error:", emailError instanceof Error ? emailError.message : emailError);
+        console.error("Full error details:", emailError);
         // Still return success to user even if email fails
         // (graceful degradation - message is logged on server)
       }
