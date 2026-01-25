@@ -42,7 +42,19 @@ export function useContactForm() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || `Failed to send message (${response.status})`);
+        let errorMsg = errorData.message || `Failed to send message (${response.status})`;
+        
+        // Include specific validation errors if available
+        if (errorData.errors && Array.isArray(errorData.errors)) {
+          const validationErrors = errorData.errors
+            .map((err: any) => err.message || JSON.stringify(err))
+            .join(', ');
+          if (validationErrors) {
+            errorMsg = `Validation error: ${validationErrors}`;
+          }
+        }
+        
+        throw new Error(errorMsg);
       }
 
       setState({
