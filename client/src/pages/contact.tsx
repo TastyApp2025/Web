@@ -148,99 +148,20 @@ export default function Contact() {
           </div>
 
           <div className="md:col-span-2">
-            <Card className="p-8 shadow-lg border-none">
-              {isSuccess && (
-                <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg flex gap-3 items-start">
-                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-green-700">{siteContent.contact.successMessage}</p>
-                  </div>
-                </div>
-              )}
-
-              {isError && (
-                <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg flex gap-3 items-start">
-                  <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-red-700">{siteContent.contact.errorMessage}</p>
-                    {errorMessage && <p className="text-sm text-red-600 mt-1">{errorMessage}</p>}
-                  </div>
-                </div>
-              )}
-
-              <form className="space-y-6" onSubmit={handleSubmit} aria-label="Contact form">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="contact-name" className="text-sm font-medium text-label">{siteContent.contact.nameLabel}</label>
-                    <Input 
-                      id="contact-name"
-                      name="name" 
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder={siteContent.contact.namePlaceholder}
-                      required
-                      aria-required="true"
-                      disabled={isLoading}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="contact-email" className="text-sm font-medium text-label">{siteContent.contact.emailLabel}</label>
-                    <Input 
-                      id="contact-email"
-                      name="email" 
-                      type="email" 
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder={siteContent.contact.emailPlaceholder}
-                      required
-                      aria-required="true"
-                      disabled={isLoading}
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="contact-subject" className="text-sm font-medium text-label">{siteContent.contact.subjectLabel}</label>
-                  <Input 
-                    id="contact-subject"
-                    name="subject" 
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder={siteContent.contact.subjectPlaceholder}
-                    required
-                    aria-required="true"
-                    disabled={isLoading}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="contact-message" className="text-sm font-medium text-label">{siteContent.contact.messageLabel}</label>
-                  <Textarea 
-                    id="contact-message"
-                    name="message" 
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder={siteContent.contact.messagePlaceholder} 
-                    className="min-h-[150px]"
-                    required
-                    aria-required="true"
-                    disabled={isLoading}
-                  />
-                </div>
-                <Button 
-                  type="submit"
-                  className="w-full md:w-auto rounded-full px-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" 
-                  size="lg"
-                  disabled={isLoading || isSuccess}
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader className="w-4 h-4 mr-2 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    siteContent.contact.sendButton
-                  )}
-                </Button>
-              </form>
+            <Card className="p-8 shadow-lg border-none flex flex-col items-center justify-center text-center min-h-[300px]">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                <Mail size={32} />
+              </div>
+              <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+              <p className="text-lg text-description mb-6">
+                For media enquiries, collaborations, or general questions, please reach out via email:
+              </p>
+              <a 
+                href={`mailto:${siteContent.contact.contactFormEmail}`}
+                className="text-2xl font-display font-bold text-primary hover:underline transition-all"
+              >
+                {siteContent.contact.contactFormEmail}
+              </a>
             </Card>
           </div>
         </div>

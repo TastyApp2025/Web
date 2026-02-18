@@ -22,24 +22,24 @@ export const siteContent = {
     metaDescription: "Honest, independent restaurant and takeaway reviews from professional chef Wesley. Self-funded. No sponsorships. Real food experiences for viewers worldwide.",
     watchButton: "Watch Latest Reviews",
     favouritesButton: "My Favourites",
-    whyDifferent: "Why I'm Different",
-    whyDifferentSubtitle: "No ratings. No free meals. No sponsored content.",
+    whyDifferent: "Built on Trust and Transparency",
+    whyDifferentSubtitle: "Instead of scores or gimmicks, the platform focuses on storytelling, real experiences, and clear disclosure — allowing both audiences and partners to engage with confidence.",
     features: [
       {
         title: "Professional Chef",
-        description: "Kitchen experience shapes every review"
+        description: "Real kitchen experience informs every feature and collaboration"
       },
       {
-        title: "Self-Funded",
-        description: "I pay for every single meal"
+        title: "Independently Experienced",
+        description: "Dining visits are approached firsthand, with transparency at the core"
       },
       {
-        title: "No Sponsorships",
-        description: "Zero paid placements or deals"
+        title: "Open & Transparent Partnerships",
+        description: "Collaborations are clearly disclosed and handled with creative integrity"
       },
       {
-        title: "Contextual",
-        description: "Judged on their own merits to be different"
+        title: "Contextual Storytelling",
+        description: "Each restaurant or brand is explored on its own merits, concept, and intent"
       }
     ],
     youtubeSection: "Latest on YouTube",
