@@ -35,78 +35,55 @@
   --radius-lg: var(--radius);
 }
 
-/* Food & Travel Creator Teal & Coral Palette - 100% Bright Text */
+/* Food & Travel Creator Teal & Coral Palette */
 :root {
-  --background: 200 35% 18%; /* Deep Sophisticated Teal */
-  --foreground: 0 0% 100%; /* Pure White */
-
+  --background: 200 35% 18%;
+  --foreground: 0 0% 100%;
   --card: 200 35% 26%;
   --card-foreground: 0 0% 100%;
   --popover: 200 35% 33%;
   --popover-foreground: 0 0% 100%;
-
-  /* Warm Peachy Coral - Appetizing */
-  --primary: 15 85% 55%; 
+  --primary: 15 85% 55%;
   --primary-foreground: 0 0% 100%;
-
-  /* Warm Gold - Complementary */
   --secondary: 40 85% 55%;
   --secondary-foreground: 0 0% 20%;
-
-  /* Fresh Green - Tastey App Button */
   --green: 120 50% 45%;
   --green-foreground: 0 0% 100%;
-
   --muted: 200 35% 12%;
-  --muted-foreground: 0 0% 100%; /* Pure White - 100% */
-
+  --muted-foreground: 0 0% 100%;
   --accent: 15 85% 55%;
   --accent-foreground: 0 0% 100%;
-
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 100%;
-
   --border: 200 35% 38%;
   --input: 200 35% 38%;
   --ring: 15 85% 55%;
-
-  /* Header & Footer - Lighter Teal */
   --header-footer: 200 35% 28%;
-
   --radius: 0.5rem;
 }
 
 .dark {
   --background: 200 35% 18%;
   --foreground: 0 0% 100%;
-
   --card: 200 35% 26%;
   --card-foreground: 0 0% 100%;
   --popover: 200 35% 33%;
   --popover-foreground: 0 0% 100%;
-
   --primary: 15 85% 55%;
   --primary-foreground: 0 0% 100%;
-
   --secondary: 40 85% 55%;
   --secondary-foreground: 0 0% 20%;
-
   --green: 120 50% 45%;
   --green-foreground: 0 0% 100%;
-
   --muted: 200 35% 12%;
   --muted-foreground: 0 0% 100%;
-
   --accent: 15 85% 55%;
   --accent-foreground: 0 0% 100%;
-
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
-
   --border: 200 35% 38%;
   --input: 200 35% 38%;
   --ring: 15 85% 55%;
-
   --header-footer: 200 35% 28%;
 }
 
@@ -129,14 +106,32 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
   }
-  
+
   header {
     background-color: hsl(var(--header-footer));
     box-shadow: 0 1px 0 hsl(var(--border)), 0 4px 24px -4px hsl(200 35% 8% / 0.5);
   }
-  
+
   footer {
     background-color: hsl(var(--header-footer));
+    position: relative;
+  }
+
+  footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--primary) / 0.4),
+      hsl(var(--border)),
+      hsl(var(--primary) / 0.4),
+      transparent
+    );
   }
 
   ::selection {
@@ -152,149 +147,48 @@
   font-family: var(--font-serif);
 }
 
-/* Remove global text color - allow independent control per element */
-
-/* Semantic text color classes for independent control */
-.heading-main {
-  @apply text-foreground;
-}
-
-.heading-page {
-  @apply text-foreground;
-}
-
-.heading-section {
-  @apply text-foreground;
-}
-
-.heading-subsection {
-  @apply text-foreground;
-}
-
-.text-body {
-  @apply text-muted-foreground;
-}
-
-.text-secondary {
-  @apply text-muted-foreground;
-}
-
-.text-description {
-  @apply text-muted-foreground;
-}
-
-.text-label {
-  @apply text-foreground;
-}
-
-.text-link {
-  @apply text-muted-foreground;
-}
-
-.text-button {
-  color: inherit;
-}
-
-.text-hero {
-  @apply text-white;
-}
-
-.text-hero-accent {
-  @apply text-primary;
-}
-
-.text-card-title {
-  @apply text-foreground;
-}
-
-.text-feature-title {
-  @apply text-white;
-}
-
-.text-feature-desc {
-  @apply text-white/70;
-}
-
-.text-footer-heading {
-  @apply text-foreground;
-}
-
-.text-footer-body {
-  @apply text-muted-foreground;
-}
-
-.text-footer-link {
-  @apply text-muted-foreground;
-}
+/* Semantic text colour classes */
+.heading-main    { @apply text-foreground; }
+.heading-page    { @apply text-foreground; }
+.heading-section { @apply text-foreground; }
+.heading-subsection { @apply text-foreground; }
+.text-body       { @apply text-muted-foreground; }
+.text-secondary  { @apply text-muted-foreground; }
+.text-description { @apply text-muted-foreground; }
+.text-label      { @apply text-foreground; }
+.text-link       { @apply text-muted-foreground; }
+.text-button     { color: inherit; }
+.text-hero       { @apply text-white; }
+.text-hero-accent { @apply text-primary; }
+.text-card-title { @apply text-foreground; }
+.text-feature-title { @apply text-white; }
+.text-feature-desc  { @apply text-white/70; }
+.text-footer-heading { @apply text-foreground; }
+.text-footer-body    { @apply text-muted-foreground; }
+.text-footer-link    { @apply text-muted-foreground; }
 
 /* Hide scrollbar while keeping scroll functionality */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, and Opera */
+  display: none;
 }
 
-/* Card-specific text colors - decoupled from global colors */
+/* Card-specific text colours */
 .card-container {
-  --card-title-color: 0 0% 20%; /* Dark grey/black for titles */
-  --card-location-color: 0 0% 60%; /* Medium grey for location */
-  --card-description-color: 0 0% 55%; /* Slightly lighter grey for description */
-}
-
-.card-title {
-  color: hsl(var(--card-title-color));
-}
-
-.card-location {
-  color: hsl(var(--card-location-color));
-}
-
-.card-description {
-  color: hsl(var(--card-description-color));
-}
-
-/* Section-specific text color overrides */
-.card-container[data-section-title="Addis"] {
   --card-title-color: 0 0% 20%;
   --card-location-color: 0 0% 60%;
   --card-description-color: 0 0% 55%;
 }
+.card-title       { color: hsl(0 0% 20%); }
+.card-location    { color: hsl(0 0% 40%); }
+.card-description { color: hsl(0 0% 35%); }
 
-.card-container[data-section-title="Seven"] {
-  --card-title-color: 0 0% 20%;
-  --card-location-color: 0 0% 60%;
-  --card-description-color: 0 0% 55%;
-}
-
-.card-container[data-section-title="The"] {
-  --card-title-color: 0 0% 20%;
-  --card-location-color: 0 0% 60%;
-  --card-description-color: 0 0% 55%;
-}
-
-.card-container[data-section-title="Andalousse"] {
-  --card-title-color: 0 0% 20%;
-  --card-location-color: 0 0% 60%;
-  --card-description-color: 0 0% 55%;
-}
-
-/* Demo: No Hype (Idiot Sandwich) - Orange text */
-.card-title {
-  color: hsl(0 0% 20%); /* Dark grey for card titles */
-}
-
-.card-location {
-  color: hsl(0 0% 40%); /* Medium grey for location */
-}
-
-.card-description {
-  color: hsl(0 0% 35%); /* Medium-dark grey for description */
-}
-
-/* Social icon hover lift */
+/* ───────────────────────────────────────────
+   Social icon hover lift
+─────────────────────────────────────────── */
 .social-icon {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -303,7 +197,9 @@
   box-shadow: 0 6px 16px hsl(200 35% 8% / 0.35);
 }
 
-/* Section accent divider */
+/* ───────────────────────────────────────────
+   Section accent divider (coral pill)
+─────────────────────────────────────────── */
 .section-accent-line {
   display: inline-block;
   width: 3rem;
@@ -313,16 +209,123 @@
   margin-bottom: 1rem;
 }
 
-/* Feature card glow on hover */
+/* ───────────────────────────────────────────
+   Feature card – glow + border on hover
+─────────────────────────────────────────── */
 .feature-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .feature-card:hover {
-  box-shadow: 0 12px 32px hsl(200 35% 8% / 0.5), 0 0 0 1px hsl(var(--primary) / 0.3);
-  border-color: hsl(var(--primary) / 0.4) !important;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px hsl(200 35% 8% / 0.55), 0 0 0 1px hsl(var(--primary) / 0.3);
+  border-color: hsl(var(--primary) / 0.45) !important;
 }
 
-/* Video card shimmer ring on hover */
+/* Feature card icon – scale on hover */
+.feature-icon {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.feature-card:hover .feature-icon {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
+}
+
+/* ───────────────────────────────────────────
+   Video card – ring glow on hover
+─────────────────────────────────────────── */
+.video-card {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
 .video-card:hover {
-  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.5), 0 8px 24px hsl(200 35% 8% / 0.6);
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.55), 0 10px 28px hsl(200 35% 8% / 0.6);
+  transform: translateY(-3px);
+}
+
+/* ───────────────────────────────────────────
+   Back-to-top button – pulsing ring
+─────────────────────────────────────────── */
+@keyframes back-to-top-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.5); }
+  50%       { box-shadow: 0 0 0 8px hsl(var(--primary) / 0); }
+}
+.back-to-top-pulse {
+  animation: back-to-top-pulse 2s ease-in-out infinite;
+}
+
+/* ───────────────────────────────────────────
+   Nav active link – animated underline
+─────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary));
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* ───────────────────────────────────────────
+   Restaurant detail – decorative quote mark
+─────────────────────────────────────────── */
+.review-card {
+  position: relative;
+}
+.review-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  font-size: 5rem;
+  line-height: 1;
+  color: hsl(var(--primary) / 0.2);
+  font-family: var(--font-serif);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ───────────────────────────────────────────
+   Info cards (restaurant detail) – hover lift
+─────────────────────────────────────────── */
+.info-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px hsl(200 35% 8% / 0.4);
+}
+
+/* ───────────────────────────────────────────
+   Tastey CTA – shimmer on green button
+─────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.btn-shimmer {
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--green)) 0%,
+    hsl(120 60% 55%) 50%,
+    hsl(var(--green)) 100%
+  );
+  animation: shimmer 3s linear infinite;
+}
+
+/* ───────────────────────────────────────────
+   Favourites filter pill active state
+─────────────────────────────────────────── */
+.filter-pill-active {
+  box-shadow: 0 2px 8px hsl(var(--primary) / 0.4);
 }

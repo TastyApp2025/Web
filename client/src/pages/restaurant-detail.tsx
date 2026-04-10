@@ -164,11 +164,11 @@ export default function RestaurantDetail() {
 
       <div className="container mx-auto px-4 pb-16 max-w-4xl">
         {/* Restaurant Image */}
-        <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
+        <div className="mb-8 rounded-xl overflow-hidden shadow-xl ring-1 ring-border/30">
           <img
             src={restaurant.image}
             alt={`${restaurant.name} - ${restaurant.type} restaurant in ${restaurant.location}`}
-            className="w-full h-96 object-cover"
+            className="w-full h-96 object-cover transition-transform duration-700 hover:scale-[1.02]"
           />
         </div>
 
@@ -204,7 +204,7 @@ export default function RestaurantDetail() {
           <h2 className="text-xl font-bold mb-4 sr-only">Restaurant Information</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             {restaurant.address && (
-              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+              <Card className="info-card p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary h-full">
                 <MapPin size={24} className="text-primary mb-2 flex-shrink-0" />
                 <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Address</h3>
                 <p className="text-xs font-semibold line-clamp-2">{restaurant.address}</p>
@@ -212,7 +212,7 @@ export default function RestaurantDetail() {
             )}
 
             {restaurant.phone && (
-              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+              <Card className="info-card p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary h-full">
                 <Phone size={24} className="text-primary mb-2 flex-shrink-0" />
                 <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Phone</h3>
                 <a href={`tel:${restaurant.phone}`} className="text-xs font-semibold text-primary hover:underline truncate w-full">
@@ -222,7 +222,7 @@ export default function RestaurantDetail() {
             )}
 
             {restaurant.hours && (
-              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+              <Card className="info-card p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary h-full">
                 <Clock size={24} className="text-primary mb-2 flex-shrink-0" />
                 <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Hours</h3>
                 <p className="text-xs font-semibold line-clamp-2">{restaurant.hours}</p>
@@ -230,7 +230,7 @@ export default function RestaurantDetail() {
             )}
 
             {restaurant.priceRange && (
-              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+              <Card className="info-card p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary h-full">
                 <DollarSign size={24} className="text-primary mb-2 flex-shrink-0" />
                 <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Price</h3>
                 <p className="text-xs font-semibold">{priceRangeDisplay[restaurant.priceRange] || restaurant.priceRange}</p>
@@ -238,7 +238,7 @@ export default function RestaurantDetail() {
             )}
 
             {restaurant.website && (
-              <Card className="p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary transition-colors h-full">
+              <Card className="info-card p-4 flex flex-col items-center text-center border-2 border-border bg-muted/30 hover:border-primary h-full">
                 <Globe size={24} className="text-primary mb-2 flex-shrink-0" />
                 <h3 className="font-bold text-[10px] uppercase text-muted-foreground mb-1">Website</h3>
                 <a
@@ -258,8 +258,8 @@ export default function RestaurantDetail() {
         {restaurant.review && !restaurant.review.includes("[YOUR DETAILED REVIEW") && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold mb-6 heading-section">Chef Wesley's Review</h2>
-            <Card className="bg-muted/20 border-2 border-border overflow-hidden">
-              <div className="max-h-[600px] overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+            <Card className="review-card bg-muted/20 border-2 border-border overflow-hidden">
+              <div className="max-h-[600px] overflow-y-auto p-8 pt-12 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
                 <p className="text-lg leading-relaxed whitespace-pre-wrap text-foreground">
                   {restaurant.review}
                 </p>

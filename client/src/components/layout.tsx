@@ -39,9 +39,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1 ${
+                className={`nav-link text-sm font-medium transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm px-2 py-1 ${
                   location === link.href
-                    ? "text-primary font-bold"
+                    ? "text-primary font-bold active"
                     : "text-link"
                 }`}
                 data-testid={`link-nav-${link.label.toLowerCase()}`}

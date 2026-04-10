@@ -78,11 +78,11 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
         </div>
         <div className="container relative z-10 px-4 text-center max-w-4xl mx-auto">
-          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg text-hero">
+          <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 text-hero" style={{textShadow: '0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4)'}}>
             {siteContent.home.heroTitle1}<br />
-            <span className="text-hero-accent drop-shadow-md">{siteContent.home.heroTitle2}</span>
+            <span className="text-hero-accent" style={{textShadow: '0 2px 12px rgba(0,0,0,0.5)'}}>{siteContent.home.heroTitle2}</span>
           </h1>
-          <p className="font-serif text-lg md:text-xl text-hero/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 drop-shadow-md">
+          <p className="font-serif text-lg md:text-xl text-hero/95 mb-8 max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200" style={{textShadow: '0 1px 6px rgba(0,0,0,0.5)'}}>
             {siteContent.home.heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
@@ -113,7 +113,7 @@ export default function Home() {
               { icon: [Utensils, TrendingUp, Shield, BarChart3][i], title: item.title, desc: item.description }
             )).map((item, i) => (
               <div key={i} className="feature-card flex flex-col items-center text-center p-6 rounded-xl bg-card border-2 border-border">
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
+                <div className="feature-icon w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
                 <h3 className="font-bold font-display text-lg mb-2 text-feature-title">{item.title}</h3>
@@ -260,7 +260,7 @@ export default function Home() {
               <p className="text-description mb-8 text-lg">
                 {siteContent.home.recipeSubtitle}
               </p>
-              <Button asChild className="w-fit rounded-full bg-green hover:bg-green/90 text-white px-8 h-12">
+              <Button asChild className="btn-shimmer w-fit rounded-full text-white px-8 h-12 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
                 <a href={siteContent.home.tasteyLink} target="_blank" rel="noopener noreferrer">
                   {siteContent.home.tryRecipeButton} <ChevronRight className="ml-2 w-4 h-4" />
                 </a>

@@ -169,10 +169,10 @@ export default function Favourites() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSelectedType(null)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     selectedType === null
-                      ? "bg-primary text-white"
-                      : "bg-muted text-muted-foreground hover:bg-primary/10"
+                      ? "bg-primary text-white filter-pill-active"
+                      : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-foreground"
                   }`}
                   aria-label="Show all types"
                 >
@@ -182,10 +182,10 @@ export default function Favourites() {
                   <button
                     key={type}
                     onClick={() => setSelectedType(type)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       selectedType === type
-                        ? "bg-primary text-white"
-                        : "bg-muted text-muted-foreground hover:bg-primary/10"
+                        ? "bg-primary text-white filter-pill-active"
+                        : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-foreground"
                     }`}
                     aria-label={`Filter by ${type}`}
                   >
