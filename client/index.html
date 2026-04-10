@@ -146,7 +146,9 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      if ('serviceWorker' in navigator) {
+      // Only register service worker on the live site, not in development
+      const isLocalDev = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname.endsWith('.replit.dev') || location.hostname.endsWith('.kirk.replit.dev') || location.hostname.endsWith('.repl.co');
+      if ('serviceWorker' in navigator && !isLocalDev) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
             .then(registration => {
@@ -156,6 +158,17 @@
               console.log('Service Worker registration failed');
             });
         });
+      } else if ('serviceWorker' in navigator && isLocalDev) {
+        // Unregister any previously cached service workers in dev
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          for (const registration of registrations) {
+            registration.unregister();
+          }
+        });
+        // Clear all caches in dev
+        if ('caches' in window) {
+          caches.keys().then(keys => keys.forEach(key => caches.delete(key)));
+        }
       }
     </script>
   </body>
