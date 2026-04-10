@@ -60,7 +60,7 @@ export const restaurants: Restaurant[] = [
     location: "Cape Town, South Africa",
     type: "Café",
     description: "Cozy café known for creative sandwiches and great coffee in a relaxed setting.",
-    image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwM3mjtafLTVinph18poHUscGolIrxzbBhdlzlPiG29QYk6iNATPcaeEDBH_QVBd1mSvG-dbypMQyOCVmApk38ndizr2mxO4et263W6qyIavDmB6S0J1p3BT9BUuNGDIT5gfvnv=s680-w680-h510-rw",
+    image: "/idiot-sandwich.png",
     mapLink: "https://maps.google.com/maps?q=The+Idiot+Sandwich+Cafe+Cape+Town",
     address: "186 Lower Main Rd, Observatory, Cape Town",
     phone: "",
