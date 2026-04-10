@@ -64,7 +64,51 @@ export function useYouTubeVideos(maxResults: number = 4) {
       try {
         // Check if API key and channel ID are configured
         if (!YOUTUBE_API_KEY || !YOUTUBE_CHANNEL_ID) {
-          setError('YouTube API not configured. Check your environment variables.');
+          // Use mock videos for preview when API is not configured
+          const mockVideos: YouTubeVideo[] = [
+            {
+              id: "mock-1",
+              title: "Is Food Inn India Worth Your Money?",
+              description: "An honest review of Food Inn India restaurant.",
+              thumbnail: "https://i.ytimg.com/vi/QkueYTG4MMQ/hqdefault.jpg",
+              publishedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+              videoId: "QkueYTG4MMQ",
+              duration: 600,
+              viewCount: 1200,
+            },
+            {
+              id: "mock-2",
+              title: "Is Mo's Diner Worth the Hype?",
+              description: "Visiting Mo's Diner to find out if it lives up to the hype.",
+              thumbnail: "https://i.ytimg.com/vi/b7QhWQ6ajvQ/hqdefault.jpg",
+              publishedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+              videoId: "b7QhWQ6ajvQ",
+              duration: 720,
+              viewCount: 980,
+            },
+            {
+              id: "mock-3",
+              title: "Is Woolworths Café Actually Worth It?",
+              description: "Putting the Woolworths Café to the test.",
+              thumbnail: "https://i.ytimg.com/vi/RWt2WuwzCFU/hqdefault.jpg",
+              publishedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+              videoId: "RWt2WuwzCFU",
+              duration: 540,
+              viewCount: 850,
+            },
+            {
+              id: "mock-4",
+              title: "Can a Salad Actually Taste Good?",
+              description: "Exploring whether a salad can truly be satisfying.",
+              thumbnail: "https://i.ytimg.com/vi/xzGnOE9FtOg/hqdefault.jpg",
+              publishedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+              videoId: "xzGnOE9FtOg",
+              duration: 480,
+              viewCount: 760,
+            },
+          ];
+          setVideos(mockVideos.slice(0, maxResults));
+          setError(null);
           setLoading(false);
           return;
         }
