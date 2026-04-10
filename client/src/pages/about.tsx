@@ -64,7 +64,6 @@ export default function About() {
       <div className="bg-secondary/30 py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <Badge variant="outline" className="mb-4 bg-white/50 backdrop-blur">Our Philosophy</Badge>
-          <span className="section-accent-line mx-auto block" />
           <h1 className="font-display font-bold text-4xl md:text-5xl mb-6 heading-page">{siteContent.about.title}</h1>
           <p className="text-lg text-description max-w-2xl mx-auto">
              {siteContent.about.subtitle}

@@ -43,7 +43,7 @@ export const siteContent = {
       }
     ],
     youtubeSection: "Latest on YouTube",
-    youtubeSectionSubtitle: "New restaurant & takeaway visits. Honest takes. Auto-updated.",
+    youtubeSectionSubtitle: "New restaurant & takeaway visits.",
     viewAllVideos: "View All Videos",
     recipeTitle: "Cook What You Have",
     recipeSubtitle: "Generate meal ideas based on your pantry. Smart, practical recipes from chef knowledge.",
