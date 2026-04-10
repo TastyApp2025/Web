@@ -134,7 +134,7 @@ export default function Home() {
                 </p>
               </div>
               {YOUTUBE_CHANNEL_ID && (
-                <Button asChild className="hidden md:flex gap-2 text-primary hover:text-primary/80">
+                <Button asChild variant="ghost" className="hidden md:flex gap-2 text-primary hover:text-primary/80">
                   <a href={getYouTubeChannelUrl(YOUTUBE_CHANNEL_ID)} target="_blank" rel="noopener noreferrer">
                     {siteContent.home.viewAllVideos} <ChevronRight className="w-4 h-4" />
                   </a>
@@ -204,7 +204,7 @@ export default function Home() {
           )}
           
           {YOUTUBE_CHANNEL_ID && (
-            <Button asChild className="w-full mt-8 md:hidden rounded-full border border-primary text-primary hover:bg-primary/10">
+            <Button asChild variant="ghost" className="w-full mt-8 md:hidden rounded-full border border-primary text-primary hover:bg-primary/10">
               <a href={getYouTubeChannelUrl(YOUTUBE_CHANNEL_ID)} target="_blank" rel="noopener noreferrer">
                 View All Videos on YouTube
               </a>
