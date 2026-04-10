@@ -83,6 +83,7 @@ export default function Contact() {
     <Layout>
       <div className="container mx-auto px-4 py-16 max-w-4xl">
         <div className="text-center mb-12">
+          <span className="section-accent-line mx-auto block" />
           <h1 className="font-display font-bold text-4xl md:text-5xl mb-6 heading-page">{siteContent.contact.title}</h1>
           <p className="text-lg text-description max-w-2xl mx-auto">
             {siteContent.contact.subtitle}

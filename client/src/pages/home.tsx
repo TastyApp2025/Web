@@ -74,7 +74,8 @@ export default function Home() {
             className="w-full h-full object-cover brightness-100"
             data-testid="hero-image"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
         </div>
         <div className="container relative z-10 px-4 text-center max-w-4xl mx-auto">
           <h1 className="font-display font-black text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 drop-shadow-lg text-hero">
@@ -103,6 +104,7 @@ export default function Home() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            <span className="section-accent-line mx-auto block" />
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-4 heading-section">{siteContent.home.whyDifferent}</h2>
             <p className="text-description max-w-xl mx-auto">{siteContent.home.whyDifferentSubtitle}</p>
           </div>
@@ -110,7 +112,7 @@ export default function Home() {
             {siteContent.home.features.map((item, i) => (
               { icon: [Utensils, TrendingUp, Shield, BarChart3][i], title: item.title, desc: item.description }
             )).map((item, i) => (
-              <div key={i} className="flex flex-col items-center text-center p-6 rounded-lg bg-card border-2 border-border transition-all hover:shadow-lg hover:-translate-y-2">
+              <div key={i} className="feature-card flex flex-col items-center text-center p-6 rounded-xl bg-card border-2 border-border">
                 <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-4">
                   <item.icon size={32} strokeWidth={1.5} />
                 </div>
@@ -128,6 +130,7 @@ export default function Home() {
           <div className="mb-12">
             <div className="flex items-end justify-between mb-6 flex-wrap gap-4">
               <div>
+                <span className="section-accent-line block" />
                 <h2 className="font-display font-bold text-3xl md:text-4xl mb-2 heading-section">{siteContent.home.youtubeSection}</h2>
                 <p className="text-description max-w-xl">
                   {siteContent.home.youtubeSectionSubtitle}
@@ -173,7 +176,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  <div className="relative aspect-video bg-muted rounded-lg overflow-hidden border border-border shadow-sm hover:shadow-md transition-all">
+                  <div className="video-card relative aspect-video bg-muted rounded-lg overflow-hidden border border-border shadow-sm transition-all">
                     {video.thumbnail && (
                       <img 
                         src={video.thumbnail} 

@@ -64,6 +64,7 @@ export default function About() {
       <div className="bg-secondary/30 py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <Badge variant="outline" className="mb-4 bg-white/50 backdrop-blur">Our Philosophy</Badge>
+          <span className="section-accent-line mx-auto block" />
           <h1 className="font-display font-bold text-4xl md:text-5xl mb-6 heading-page">{siteContent.about.title}</h1>
           <p className="text-lg text-description max-w-2xl mx-auto">
              {siteContent.about.subtitle}
@@ -90,19 +91,25 @@ export default function About() {
                 {siteContent.about.chefBio2}
               </p>
             </div>
-            <div className="bg-primary/5 p-6 rounded-xl border border-primary/20">
-              <h3 className="font-bold text-primary mb-2">My Promise</h3>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
+            <div className="bg-primary/10 p-6 rounded-2xl border border-primary/25 shadow-sm">
+              <h3 className="font-bold text-primary mb-4 tracking-wide uppercase text-sm">My Promise</h3>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
                   All visits are independent
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
+                <li className="flex items-center gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
                   Food is paid for personally
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
+                <li className="flex items-center gap-3">
+                  <span className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
                   No paid promotions accepted
                 </li>
               </ul>

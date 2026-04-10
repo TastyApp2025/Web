@@ -114,19 +114,34 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    line-height: 1.65;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold text-foreground;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
   
   header {
     background-color: hsl(var(--header-footer));
+    box-shadow: 0 1px 0 hsl(var(--border)), 0 4px 24px -4px hsl(200 35% 8% / 0.5);
   }
   
   footer {
     background-color: hsl(var(--header-footer));
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.35);
+    color: hsl(0 0% 100%);
   }
 }
 
@@ -279,4 +294,35 @@
   color: hsl(0 0% 35%); /* Medium-dark grey for description */
 }
 
+/* Social icon hover lift */
+.social-icon {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 16px hsl(200 35% 8% / 0.35);
+}
 
+/* Section accent divider */
+.section-accent-line {
+  display: inline-block;
+  width: 3rem;
+  height: 3px;
+  border-radius: 9999px;
+  background-color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+/* Feature card glow on hover */
+.feature-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.feature-card:hover {
+  box-shadow: 0 12px 32px hsl(200 35% 8% / 0.5), 0 0 0 1px hsl(var(--primary) / 0.3);
+  border-color: hsl(var(--primary) / 0.4) !important;
+}
+
+/* Video card shimmer ring on hover */
+.video-card:hover {
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.5), 0 8px 24px hsl(200 35% 8% / 0.6);
+}

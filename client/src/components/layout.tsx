@@ -155,7 +155,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   data-testid="link-youtube"
                   aria-label="YouTube"
                 >
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-red-600">
+                  <div className="social-icon w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-red-600">
                     <Youtube size={20} />
                   </div>
                 </a>
@@ -167,7 +167,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   data-testid="link-instagram"
                   aria-label="Instagram"
                 >
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-pink-600">
+                  <div className="social-icon w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-pink-600">
                     <Instagram size={20} />
                   </div>
                 </a>
@@ -179,7 +179,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   data-testid="link-tiktok"
                   aria-label="TikTok"
                 >
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-black">
+                  <div className="social-icon w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-black">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
